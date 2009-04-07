@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/jar/COMMON_LIBS/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/jar/WEB-INF_LIBS/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="/jar/WEB-INF_LIBS/hibernate3.jar"/>
+	<classpathentry kind="lib" path="/jar/WEB-INF_LIBS/itext-1.3.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.launching.macosx.MacOSXType/JVM 1.4.2"/>
+	<classpathentry kind="output" path="src"/>
+</classpath>

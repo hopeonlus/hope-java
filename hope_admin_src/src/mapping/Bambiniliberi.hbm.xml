@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+    <class name="mapping.Bambiniliberi" table="bambiniliberi" schema="public">
+        <composite-id name="id" class="mapping.BambiniliberiId">
+            <key-property name="id" type="integer">
+                <column name="id" />
+            </key-property>
+            <key-property name="nome" type="string">
+                <column name="nome" length="100" />
+            </key-property>
+            <key-property name="sesso" type="string">
+                <column name="sesso" length="1" />
+            </key-property>
+            <key-property name="citta" type="string">
+                <column name="citta" length="60" />
+            </key-property>
+            <key-property name="nazione" type="string">
+                <column name="nazione" length="70" />
+            </key-property>
+            <key-property name="scuola" type="string">
+                <column name="scuola" length="70" />
+            </key-property>
+            <key-property name="anno" type="integer">
+                <column name="anno" />
+            </key-property>
+            <key-property name="costo" type="integer">
+                <column name="costo" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

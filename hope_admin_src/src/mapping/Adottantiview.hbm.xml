@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+    <class name="mapping.Adottantiview" table="adottantiview" schema="public">
+        <composite-id name="id" class="mapping.AdottantiviewId">
+            <key-property name="id" type="integer">
+                <column name="id" />
+            </key-property>
+            <key-property name="idanagrafe" type="integer">
+                <column name="idanagrafe" />
+            </key-property>
+            <key-property name="cognome" type="string">
+                <column name="cognome" length="50" />
+            </key-property>
+            <key-property name="nome" type="string">
+                <column name="nome" length="40" />
+            </key-property>
+            <key-property name="idbambino" type="integer">
+                <column name="idbambino" />
+            </key-property>
+            <key-property name="nomebambino" type="string">
+                <column name="nomebambino" length="100" />
+            </key-property>
+            <key-property name="anno" type="integer">
+                <column name="anno" />
+            </key-property>
+            <key-property name="p1" type="integer">
+                <column name="p1" />
+            </key-property>
+            <key-property name="p2" type="integer">
+                <column name="p2" />
+            </key-property>
+            <key-property name="p3" type="integer">
+                <column name="p3" />
+            </key-property>
+            <key-property name="costo" type="integer">
+                <column name="costo" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

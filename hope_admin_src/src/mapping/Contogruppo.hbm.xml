@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+    <class name="mapping.Contogruppo" table="contogruppo" schema="public">
+        <composite-id name="id" class="mapping.ContogruppoId">
+            <key-property name="id" type="integer">
+                <column name="id" />
+            </key-property>
+            <key-property name="nomeconto" type="string">
+                <column name="nomeconto" length="100" />
+            </key-property>
+            <key-property name="gruppo" type="integer">
+                <column name="gruppo" />
+            </key-property>
+            <key-property name="nomegruppo" type="string">
+                <column name="nomegruppo" length="100" />
+            </key-property>
+            <key-property name="tipo" type="integer">
+                <column name="tipo" />
+            </key-property>
+            <key-property name="mostra" type="boolean">
+                <column name="mostra" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

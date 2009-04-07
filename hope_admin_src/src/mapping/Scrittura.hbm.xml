@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+    <class name="mapping.Scrittura" table="scrittura" schema="public">
+        <id name="id" type="integer">
+            <column name="id" />
+            <generator class="sequence">
+	            <param name="sequence">scritturaid</param>
+	        </generator>
+        </id>
+        <many-to-one name="dare" class="mapping.Conto" fetch="select">
+            <column name="dare" not-null="true" />
+        </many-to-one>
+        <many-to-one name="avere" class="mapping.Conto" fetch="select">
+            <column name="avere" not-null="true" />
+        </many-to-one>
+        <many-to-one name="anno" class="mapping.Anno" fetch="select">
+            <column name="anno" not-null="true" />
+        </many-to-one>
+        <property name="data" type="date">
+            <column name="data" length="4" not-null="true" />
+        </property>
+        <property name="descrizione" type="string">
+            <column name="descrizione" />
+        </property>
+        <property name="importo" type="float">
+            <column name="importo" precision="4" scale="0" not-null="true" />
+        </property>
+        <property name="automatico" type="boolean">
+            <column name="automatico" />
+        </property>
+    </class>
+</hibernate-mapping>

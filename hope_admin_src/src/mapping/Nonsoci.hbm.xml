@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+    <class name="mapping.Nonsoci" table="nonsoci" schema="public">
+        <composite-id name="id" class="mapping.NonsociId">
+            <key-property name="id" type="integer">
+                <column name="id" />
+            </key-property>
+            <key-property name="cognome" type="string">
+                <column name="cognome" length="50" />
+            </key-property>
+            <key-property name="nome" type="string">
+                <column name="nome" length="40" />
+            </key-property>
+            <key-property name="citta" type="string">
+                <column name="citta" length="60" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

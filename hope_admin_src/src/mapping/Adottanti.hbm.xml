@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+    <class name="mapping.Adottanti" table="adottanti" schema="public">
+        <id name="id" type="integer">
+            <column name="id" />
+           	<generator class="sequence">
+	            <param name="sequence">adozioniid</param>
+	        </generator>
+        </id>
+        <many-to-one name="bambino" class="mapping.Bambino" fetch="select">
+            <column name="idbambino" not-null="true" />
+        </many-to-one>
+        <many-to-one name="anagrafe" class="mapping.Anagrafe" fetch="select">
+            <column name="idanagrafe" not-null="true" />
+        </many-to-one>
+        <property name="anno" type="integer">
+            <column name="anno" not-null="true" />
+        </property>
+        <property name="p1" type="integer">
+            <column name="p1" not-null="true" />
+        </property>
+        <property name="p2" type="integer">
+            <column name="p2" not-null="true" />
+        </property>
+        <property name="p3" type="integer">
+            <column name="p3" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

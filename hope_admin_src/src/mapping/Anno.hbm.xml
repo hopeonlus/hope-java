@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+    <class name="mapping.Anno" table="anno" schema="public">
+        <id name="anno" type="integer">
+            <column name="anno" />
+            <generator class="assigned" />
+        </id>
+        <property name="chiuso" type="boolean">
+            <column name="chiuso" not-null="true" />
+        </property>
+		<set name="scritturas" inverse="true">
+            <key>
+                <column name="anno" not-null="true" />
+            </key>
+            <one-to-many class="mapping.Scrittura" />
+        </set>
+    </class>
+</hibernate-mapping>

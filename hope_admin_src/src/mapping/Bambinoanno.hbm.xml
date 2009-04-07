@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+    <class name="mapping.Bambinoanno" table="bambinoanno" schema="public">
+        <id name="id" type="integer">
+            <column name="id" />
+           	<generator class="sequence">
+	            <param name="sequence">bambinoannoid</param>
+	        </generator>
+        </id>
+        <many-to-one name="bambino" class="mapping.Bambino" fetch="select">
+            <column name="idbambino" not-null="true" />
+        </many-to-one>
+        <property name="anno" type="integer">
+            <column name="anno" not-null="true" />
+        </property>
+        <property name="note" type="string">
+            <column name="note" />
+        </property>
+        <property name="costo" type="integer">
+            <column name="costo" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

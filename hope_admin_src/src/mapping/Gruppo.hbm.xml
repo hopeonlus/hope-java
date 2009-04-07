@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+    <class name="mapping.Gruppo" table="gruppo" schema="public">
+        <id name="id" type="integer">
+            <column name="id" />
+            <generator class="sequence">
+	            <param name="sequence">gruppoid</param>
+	        </generator>
+        </id>
+        <property name="tipo" type="integer">
+            <column name="tipo" not-null="true" />
+        </property>
+        <property name="nome" type="string">
+            <column name="nome" length="100" not-null="true" />
+        </property>
+        <set name="contos" inverse="true">
+            <key>
+                <column name="gruppo" />
+            </key>
+            <one-to-many class="mapping.Conto" />
+        </set>
+    </class>
+</hibernate-mapping>
