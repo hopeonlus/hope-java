@@ -1,0 +1,145 @@
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+    <display-name>bilancio HOPE</display-name>
+    
+	<description>
+		Beta programma bilancio HOPE
+	</description>
+
+	<servlet>
+	        <servlet-name>Accesso</servlet-name>
+        	<servlet-class>controller.MainCtrl</servlet-class>		
+	</servlet>
+	
+	<servlet-mapping>
+        	<servlet-name>Accesso</servlet-name>
+	        <url-pattern>/accedi</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+        	<servlet-name>Accesso</servlet-name>
+	        <url-pattern>/bilancio/accedi</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+        	<servlet-name>Accesso</servlet-name>
+	        <url-pattern>/soci/accedi</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+	        <servlet-name>Accessobilancio</servlet-name>
+        	<servlet-class>controller.bilancio.MainCtrl</servlet-class>		
+	</servlet>
+	
+	<servlet-mapping>
+        	<servlet-name>Accessobilancio</servlet-name>
+	        <url-pattern>/bilancio/accedibilancio</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	        <servlet-name>Scritture</servlet-name>
+        	<servlet-class>controller.bilancio.ScrittureCtrl</servlet-class>		
+	</servlet>
+	
+	<servlet-mapping>
+        	<servlet-name>Scritture</servlet-name>
+	        <url-pattern>/bilancio/scritture</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	        <servlet-name>Conti</servlet-name>
+        	<servlet-class>controller.bilancio.ContiCtrl</servlet-class>		
+	</servlet>
+	
+	<servlet-mapping>
+        	<servlet-name>Conti</servlet-name>
+	        <url-pattern>/bilancio/conti</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	        <servlet-name>Bilancio</servlet-name>
+        	<servlet-class>controller.bilancio.BilancioCtrl</servlet-class>		
+	</servlet>
+	
+	<servlet-mapping>
+        	<servlet-name>Bilancio</servlet-name>
+	        <url-pattern>/bilancio/bilancio</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	        <servlet-name>Accessosoci</servlet-name>
+        	<servlet-class>controller.soci.MainCtrl</servlet-class>		
+	</servlet>
+	
+	<servlet-mapping>
+        	<servlet-name>Accessosoci</servlet-name>
+	        <url-pattern>/soci/accedisoci</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	        <servlet-name>Anagrafe</servlet-name>
+        	<servlet-class>controller.soci.AnagrafeCtrl</servlet-class>		
+	</servlet>
+	
+	<servlet-mapping>
+        	<servlet-name>Anagrafe</servlet-name>
+	        <url-pattern>/soci/anagrafe</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	        <servlet-name>Soci</servlet-name>
+        	<servlet-class>controller.soci.SociCtrl</servlet-class>		
+	</servlet>
+	
+	<servlet-mapping>
+        	<servlet-name>Soci</servlet-name>
+	        <url-pattern>/soci/soci</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	        <servlet-name>Adozioni</servlet-name>
+        	<servlet-class>controller.soci.AdozioniCtrl</servlet-class>		
+	</servlet>
+	
+	<servlet-mapping>
+        	<servlet-name>Adozioni</servlet-name>
+	        <url-pattern>/soci/adozioni</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	        <servlet-name>Stampa</servlet-name>
+        	<servlet-class>controller.soci.StampaCtrl</servlet-class>		
+	</servlet>
+	
+	<servlet-mapping>
+        	<servlet-name>Stampa</servlet-name>
+	        <url-pattern>/soci/stampa</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	        <servlet-name>Accessosito</servlet-name>
+        	<servlet-class>controller.sito.MainCtrl</servlet-class>		
+	</servlet>
+	
+	<servlet-mapping>
+        	<servlet-name>Accessosito</servlet-name>
+	        <url-pattern>/sito/accedisito</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	        <servlet-name>News</servlet-name>
+        	<servlet-class>controller.sito.NewsCtrl</servlet-class>		
+	</servlet>
+	
+	<servlet-mapping>
+        	<servlet-name>News</servlet-name>
+	        <url-pattern>/sito/news</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>20</session-timeout>
+	</session-config>
+
+</web-app>

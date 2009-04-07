@@ -1,0 +1,63 @@
+body {
+background-image:url(img/back.jpg);
+background-repeat:repeat-x;
+background-color:#EAD6D6;
+background-position:top left;
+}
+
+
+#container{
+	position:relative;
+	top:1px;
+	width: 700px;
+	margin: 0 auto;
+	text-align: left;
+	order: 1px solid #36c;
+}
+
+#menu {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 100%;
+border-bottom: 1px dashed;
+border-bottom-color:#CC0000;
+padding: 0px;
+padding-bottom: 2px;
+adding-bottom: 6px;
+}
+
+#menu ul {
+list-style: none;
+margin: 0px;
+padding: 0px;
+border: none;
+}
+
+#menu li {
+display:inline;
+list-style:none;
+padding: 0px;
+width:30px;
+}
+
+#menu li a {
+font-size: 80%;
+padding: 5px 0px 2px 4px;
+text-decoration: none;
+color: #999999;
+width:160px;
+order: 1px solid white;
+}
+
+#menu ul li a:hover {
+color: #000000;
+background-color: #eeeeee;
+order: 1px solid #CC0000;
+}
+
+/* Stili per font */
+.bilancio {
+	font: 24px Verdana, sans-serif;
+	text-align:center;
+	font-weight: bold;
+	color: #999999;
+}
