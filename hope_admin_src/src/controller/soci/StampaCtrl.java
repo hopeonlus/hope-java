@@ -399,15 +399,19 @@ public class StampaCtrl extends HttpServlet{
            				
         }
         catch(DocumentException de) {
+        	de.printStackTrace();
 			Avviso err = new Avviso (de.getMessage());
 			request.setAttribute("err", err);
 			nextview = "/errore.jsp";
         }
         catch(IOException ioe) {
+        	ioe.printStackTrace();
 			Avviso err = new Avviso (ioe.getMessage());
 			request.setAttribute("err", err);
 			nextview = "/errore.jsp";
-        }
+        } catch (Exception e) {
+			e.printStackTrace();
+		}
             
         document.close();
         
