@@ -13,7 +13,7 @@
 	            <param name="sequence">newsid</param>
 	        </generator>
         </id>
-        <many-to-one name="categorienews" class="mapping.Categorienews" fetch="select">
+        <many-to-one name="categorienews" class="mapping.Categorienews" fetch="select" lazy="false">
             <column name="tipo" not-null="true" />
         </many-to-one>
         <property name="titolo" type="string">
@@ -31,25 +31,25 @@
         <property name="home" type="string">
             <column name="home" length="10" not-null="true" />
         </property>
-        <set name="downloads" inverse="true">
+        <set name="downloads" inverse="true" lazy="false">
             <key>
                 <column name="idnews" not-null="true" />
             </key>
             <one-to-many class="mapping.Download" />
         </set>
-        <set name="eventis" inverse="true">
+        <set name="eventis" inverse="true" lazy="false">
             <key>
                 <column name="idnews" not-null="true" />
             </key>
             <one-to-many class="mapping.Eventi" />
         </set>
-        <set name="newsimgs" inverse="true">
+        <set name="newsimgs" inverse="true" lazy="false">
             <key>
                 <column name="idnews" not-null="true" />
             </key>
             <one-to-many class="mapping.Newsimg" />
         </set>
-        <set name="highs" inverse="true">
+        <set name="highs" inverse="true" lazy="false">
             <key>
                 <column name="idnews" not-null="true" />
             </key>

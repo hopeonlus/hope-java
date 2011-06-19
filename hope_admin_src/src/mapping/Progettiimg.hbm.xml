@@ -15,10 +15,10 @@
                 <column name="idimg" />
             </key-property>
         </composite-id>
-        <many-to-one name="immagini" class="mapping.Immagini" update="false" insert="false" fetch="select">
+        <many-to-one name="immagini" class="mapping.Immagini" update="false" insert="false" fetch="select" lazy="false">
             <column name="idimg" not-null="true" />
         </many-to-one>
-        <many-to-one name="progetti" class="mapping.Progetti" update="false" insert="false" fetch="select">
+        <many-to-one name="progetti" class="mapping.Progetti" update="false" insert="false" fetch="select" lazy="false">
             <column name="idprogetto" not-null="true" />
         </many-to-one>
     </class>

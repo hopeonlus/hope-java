@@ -13,10 +13,10 @@
 	            <param name="sequence">adozioniid</param>
 	        </generator>
         </id>
-        <many-to-one name="bambino" class="mapping.Bambino" fetch="select">
+        <many-to-one name="bambino" class="mapping.Bambino" fetch="select" lazy="false">
             <column name="idbambino" not-null="true" />
         </many-to-one>
-        <many-to-one name="anagrafe" class="mapping.Anagrafe" fetch="select">
+        <many-to-one name="anagrafe" class="mapping.Anagrafe" fetch="select" lazy="false">
             <column name="idanagrafe" not-null="true" />
         </many-to-one>
         <property name="anno" type="integer">

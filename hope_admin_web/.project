@@ -27,4 +27,11 @@
 		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
 		<nature>org.eclipse.jem.workbench.JavaEMFNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>hope_admin_src</name>
+			<type>2</type>
+			<location>/Volumes/Macintosh Data/Users/Tete/Documents/Programming/eclipse_workspace/hope_admin_src/src</location>
+		</link>
+	</linkedResources>
 </projectDescription>

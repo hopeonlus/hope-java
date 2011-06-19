@@ -19,7 +19,7 @@
         <property name="nome" type="string">
             <column name="nome" length="100" not-null="true" />
         </property>
-        <set name="contos" inverse="true">
+        <set name="contos" inverse="true" lazy="false">
             <key>
                 <column name="gruppo" />
             </key>

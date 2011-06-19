@@ -18,7 +18,7 @@
 <BODY id="body">
 	<div id="container">
 		<TABLE border=0 align=center width=100%>
-			<TR>
+			<TR> 
 				<TD align=left><img src="./img/logo.gif" height=80px></TD>
 				<TD align=center>
 					<font class="bilancio" size="+2">H.O.P.E. - Help Other People Everywhere</font>

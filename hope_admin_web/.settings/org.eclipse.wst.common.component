@@ -3,6 +3,7 @@
 <wb-module deploy-name="hope_admin_web">
 <wb-resource deploy-path="/" source-path="/WebContent"/>
 <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+<wb-resource deploy-path="/WEB-INF/classes" source-path="/hope_admin_src"/>
 <property name="context-root" value="hope_admin_web"/>
 <property name="java-output-path" value="build/classes"/>
 </wb-module>

@@ -13,7 +13,7 @@
 	            <param name="sequence">pagamentoid</param>
 	        </generator>
         </id>
-        <many-to-one name="socio" class="mapping.Socio" fetch="select">
+        <many-to-one name="socio" class="mapping.Socio" fetch="select" lazy="false">
             <column name="tessera" not-null="true" />
         </many-to-one>
         <property name="anno" type="integer">

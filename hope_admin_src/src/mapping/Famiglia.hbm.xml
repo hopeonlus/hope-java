@@ -15,10 +15,10 @@
                 <column name="id1" />
             </key-property>
         </composite-id>
-        <many-to-one name="anagrafeById1" class="mapping.Anagrafe" update="false" insert="false" fetch="select">
+        <many-to-one name="anagrafeById1" class="mapping.Anagrafe" update="false" insert="false" fetch="select" lazy="false">
             <column name="id1" not-null="true" />
         </many-to-one>
-        <many-to-one name="anagrafeById2" class="mapping.Anagrafe" update="false" insert="false" fetch="select">
+        <many-to-one name="anagrafeById2" class="mapping.Anagrafe" update="false" insert="false" fetch="select" lazy="false">
             <column name="id2" not-null="true" />
         </many-to-one>
     </class>

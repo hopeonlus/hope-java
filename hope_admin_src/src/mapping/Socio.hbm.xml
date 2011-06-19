@@ -11,13 +11,13 @@
             <column name="tessera" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="anagrafe" class="mapping.Anagrafe" fetch="select">
+        <many-to-one name="anagrafe" class="mapping.Anagrafe" fetch="select" lazy="false">
             <column name="id" not-null="true" />
         </many-to-one>
         <property name="note" type="string">
             <column name="note" />
         </property>
-        <set name="pagamentosocis" inverse="true">
+        <set name="pagamentosocis" inverse="true" lazy="false">
             <key>
                 <column name="tessera" not-null="true" />
             </key>

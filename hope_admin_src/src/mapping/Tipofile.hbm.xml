@@ -22,7 +22,7 @@
         <property name="icona" type="string">
             <column name="icona" length="100" />
         </property>
-        <set name="downloads" inverse="true">
+        <set name="downloads" inverse="true" lazy="false">
             <key>
                 <column name="idtipofile" not-null="true" />
             </key>

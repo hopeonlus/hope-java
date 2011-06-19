@@ -13,7 +13,7 @@
 	            <param name="sequence">eventiid</param>
 	        </generator>
         </id>
-        <many-to-one name="news" class="mapping.News" fetch="select">
+        <many-to-one name="news" class="mapping.News" fetch="select" lazy="false">
             <column name="idnews" not-null="true" />
         </many-to-one>
         <property name="titolo" type="string">

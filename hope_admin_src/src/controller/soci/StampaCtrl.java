@@ -8,13 +8,22 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import mapping.*;
+import mapping.Anagrafe;
+import mapping.Famiglia;
+import mapping.Users;
 
-import org.hibernate.*;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.Query;
+import org.hibernate.Session;
+
+import system.Avviso;
+import system.HibernateUtil;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
@@ -30,8 +39,6 @@ import com.lowagie.text.pdf.PdfPageEventHelper;
 import com.lowagie.text.pdf.PdfWriter;
 
 import eccezioni.LoginException;
-
-import system.*;
 
 public class StampaCtrl extends HttpServlet{
 
@@ -80,8 +87,6 @@ public class StampaCtrl extends HttpServlet{
 	
 	public void controller (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		hsession = new Configuration().configure().buildSessionFactory().openSession();
-
 		try {
 			
 			hsession = HibernateUtil.currentSession();		
@@ -227,6 +232,12 @@ public class StampaCtrl extends HttpServlet{
 				}
 			}
 			
+			if(where)
+				query += " AND";
+			else
+				query += " WHERE";
+			query += " (comunicazioni = :comunicazioni)";
+		
 			if((page.equals("etichette"))||(page.equals("buste")))
 				query += " ORDER BY posta, cognome, nome";
 			else
@@ -239,6 +250,7 @@ public class StampaCtrl extends HttpServlet{
 				q.setString("anno", anno);
 			if(setanno2)
 				q.setString("anno2", annoT);
+			q.setBoolean("comunicazioni", true);
 			
 			List lista = q.list();
 			

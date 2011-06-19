@@ -19,7 +19,7 @@
         <property name="descrizione" type="string">
             <column name="descrizione" />
         </property>
-        <set name="newses" inverse="true">
+        <set name="newses" inverse="true" lazy="false">
             <key>
                 <column name="tipo" not-null="true" />
             </key>

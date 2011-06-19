@@ -62,8 +62,6 @@ public class MainCtrl extends HttpServlet{
 	
 	public void controller (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		hsession = new Configuration().configure().buildSessionFactory().openSession();
-
 		try {
 			
 			hsession = HibernateUtil.currentSession();		

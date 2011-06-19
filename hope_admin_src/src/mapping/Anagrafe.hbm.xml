@@ -46,25 +46,28 @@
         <property name="posta" type="boolean">
             <column name="posta" />
         </property>
-        <set name="socios" inverse="true">
+        <property name="comunicazioni" type="boolean">
+            <column name="comunicazioni" />
+        </property>
+        <set name="socios" inverse="true" lazy="false">
             <key>
                 <column name="id" not-null="true" />
             </key>
             <one-to-many class="mapping.Socio" />
         </set>
-        <set name="adottantis" inverse="true">
+        <set name="adottantis" inverse="true" lazy="false">
             <key>
                 <column name="idanagrafe" not-null="true" />
             </key>
             <one-to-many class="mapping.Adottanti" />
         </set>
-        <set name="famigliasForId1" inverse="true">
+        <set name="famigliasForId1" inverse="true" lazy="false">
             <key>
                 <column name="id1" not-null="true" />
             </key>
             <one-to-many class="mapping.Famiglia" />
         </set>
-        <set name="famigliasForId2" inverse="true">
+        <set name="famigliasForId2" inverse="true" lazy="false">
             <key>
                 <column name="id2" not-null="true" />
             </key>

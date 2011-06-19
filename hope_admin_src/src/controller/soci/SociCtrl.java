@@ -43,7 +43,6 @@ public class SociCtrl extends HttpServlet{
 	private Session hsession = null;
 	private HttpSession sessione = null;
 	private String nextview = "";
-	private Transaction tx;
 	private List printed = new ArrayList();
 	
 	/**
@@ -82,8 +81,7 @@ public class SociCtrl extends HttpServlet{
 	
 	public void controller (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		hsession = new Configuration().configure().buildSessionFactory().openSession();
-
+		Transaction tx = null;
 		try {
 			
 			hsession = HibernateUtil.currentSession();		
@@ -153,28 +151,31 @@ public class SociCtrl extends HttpServlet{
 				stampaSoci(request, response);
 			}
 
-
+			tx.commit();
+			
 		} catch (LoginException e) {
 			
 			Avviso err = new Avviso (e.getMessage());
 			request.setAttribute("err", err);
 			nextview = "/./error.jsp";
-
+			tx.rollback();
+			
 		} catch (Exception e) {
 			
 			Avviso err = new Avviso ("Errore indefinito. Ricorda di non usare il tasto REFRESH di Explorer!");
 			request.setAttribute("err", err);
 			System.out.println(e.getMessage());
 			nextview = "/./error.jsp";
+			tx.rollback();
 			
 		} finally {
 			
+			HibernateUtil.closeSession();
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextview);
 			if (dispatcher != null) {
 				response.encodeURL(nextview);
 				dispatcher.forward(request, response);
 			}
-			HibernateUtil.closeSession();
 			
 		}
 		
@@ -276,8 +277,6 @@ public class SociCtrl extends HttpServlet{
 			
 			hsession.saveOrUpdate(s);
 			
-			tx.commit();
-			
 			viewSocio(request, response);
 		}
 		catch(Exception ex){
@@ -319,7 +318,6 @@ public class SociCtrl extends HttpServlet{
 			ps.setImporto(new Integer(importo));
 			
 			hsession.saveOrUpdate(ps);
-			tx.commit();
 			
 		}catch(Exception ex){
 			
@@ -383,7 +381,6 @@ public class SociCtrl extends HttpServlet{
 		Socio s = (Socio) q.list().get(0);
 		
 		hsession.delete(s);
-		tx.commit();
 		
 		if(what.equals("null"))
 			pageInsert(request, response);
@@ -401,7 +398,6 @@ public class SociCtrl extends HttpServlet{
 		Pagamentosoci ps = (Pagamentosoci) q.list().get(0);
 		
 		hsession.delete(ps);
-		tx.commit();
 		
 		viewSocio(request, response);
 	}
@@ -545,8 +541,66 @@ public class SociCtrl extends HttpServlet{
 			creaPdfElenco(request, response, ListaSoci, nome_file, titolo);
 		else if(page.equals("buste"))
 			creaPdfBuste(request, response, ListaSoci, nome_file);
+		else if(page.equals("csv")) {
+			nome_file = nome_file.replace("pdf", "csv");
+			creaCsv(request, response, ListaSoci, nome_file);
+		}
 		
 		nextview = "/soci/pdf/" + nome_file;
+		
+	}
+
+	private void creaCsv(HttpServletRequest request,
+			HttpServletResponse response, List listaSoci, String nomeFile) {
+		
+		FileOutputStream fos = null;
+		
+		try {
+			List fileContent = new ArrayList();
+			fileContent.add( new String [] { "Cognome", "Nome", "Indirizzo", "Cap", "Cittˆ"} );
+			for(int i = 0; i < listaSoci.size(); i++) {
+				PagamentiId record = ((Pagamenti) listaSoci.get(i)).getId();
+				String[] x = new String[4];
+				
+				x[0] = record.getCognome() + " " + record.getNome();
+				
+				String tmp = (record.getIndirizzo() == null) ? "" : record.getIndirizzo();
+				if(tmp.indexOf(",") != -1) {
+					x[1] = record.getIndirizzo();
+				} else {
+					x[1] = record.getIndirizzo() + ",";
+				}
+				
+				x[2] = record.getCap();
+				x[3] = record.getCitta();
+				
+				fileContent.add(x);
+			}
+			
+			fos = new FileOutputStream(getServletContext().getRealPath("") + "/soci/pdf/" + nomeFile);
+			
+			for(int i=0; i < fileContent.size(); i++) {
+				String[] x = (String[]) fileContent.get(i);
+				for(int j=0; j < x.length; j++) {
+					fos.write(x[j].getBytes());
+					if((j+1) == x.length)
+						fos.write("\n".getBytes());
+					else
+						fos.write(",".getBytes());
+				}
+			}
+			
+		} catch (Exception e) {
+			System.out.println("ERROR in CSV EXPORT!!");
+			e.printStackTrace();
+		} finally {
+			if(fos != null)
+				try {
+					fos.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		}
 		
 	}
 

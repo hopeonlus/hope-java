@@ -80,6 +80,8 @@ function svuota()
 <%
 		}
 %>
+
+	<form name="cerca2" action="adozioni" method="post" onSubmit="return isOk2()">
 			<TABLE class="tcontent" align="center">
 				<TR class="intestazione">
 					<TD colspan="2">
@@ -87,8 +89,7 @@ function svuota()
 					</TD>
 				</TR>
 				<TR><TD></TD></TR>
-			<form name="cerca2" action="adozioni" method="post" onSubmit="return isOk2()">
-				<TR>
+			<TR>
 					<TD align="right">
 						<B>Cognome : </B><input type="text" name="cognome" value="<%= cognome %>" onClick="javascript:svuota()">
 					</TD>
@@ -96,11 +97,11 @@ function svuota()
 						<input type="submit" value="Trova">
 					</TD>
 				</TR>
-				<input type="hidden" name="what" value="cognome">
-				<input type="hidden" name="action" value="insert">
-				<input type="hidden" name="page" value="first">
-			</form>
+				<input type="hidden" name="what" value="cognome"/>
+				<input type="hidden" name="action" value="insert"/>
+				<input type="hidden" name="page" value="first"/>
 			</TABLE>
+		</form>
 			<BR>
 			<TAble class="tcontent" align="center">
 				<TR>

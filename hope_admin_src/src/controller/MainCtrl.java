@@ -24,7 +24,6 @@ public class MainCtrl extends HttpServlet{
 	private Session hsession = null;
 	private HttpSession sessione = null;
 	private String nextview = "";
-	private Transaction tx;
 	
 	/**
 	 * The doGet method of the servlet.
@@ -62,14 +61,14 @@ public class MainCtrl extends HttpServlet{
 	
 	public void controller (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		new Configuration().configure().buildSessionFactory();
-
+		Transaction tx = null;
+		
 		try {
 			
 			hsession = HibernateUtil.currentSession();		
 			sessione = request.getSession();
 			tx = hsession.beginTransaction();
-					
+				
 			String action = request.getParameter("action");
 			String what = request.getParameter("what");
 		
@@ -114,12 +113,15 @@ public class MainCtrl extends HttpServlet{
 					saveUser(request, response);
 			}
 
+			tx.commit();
+			
 		} catch (LoginException e) {
 			
 			Avviso err = new Avviso (e.getMessage());
 			request.setAttribute("err", err);
 			nextview = "/index.jsp";
-
+			tx.rollback();
+			
 		} catch (Exception e) {
 			
 			String st = "";
@@ -133,16 +135,16 @@ public class MainCtrl extends HttpServlet{
 			e.printStackTrace();
 			nextview = "/error.jsp";
 			
-			String st1 = "jufewiuhjnfkeoihubjnkojihubjnkopijhubjnklpijhujbnjhujb";
-
-		} finally {
+			tx.rollback();
 			
+		} finally {
+
+			HibernateUtil.closeSession();
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextview);
 			if (dispatcher != null) {
 				response.encodeURL(nextview);
 				dispatcher.forward(request, response);
 			}
-			HibernateUtil.closeSession();
 			
 		}
 		
@@ -163,8 +165,6 @@ public class MainCtrl extends HttpServlet{
 		u.setTipo(new Integer(tipo));
 		
 		hsession.saveOrUpdate(u);
-		
-		tx.commit();
 		
 		pageUsers(request, response);
 	}
@@ -204,8 +204,6 @@ public class MainCtrl extends HttpServlet{
 			
 			hsession.saveOrUpdate(u);
 			
-			tx.commit();
-			
 			pageUsers(request, response);
 		
 		}catch(Exception ex){
@@ -227,8 +225,6 @@ public class MainCtrl extends HttpServlet{
 		Users u = (Users) q.list().get(0);
 		
 		hsession.delete(u);
-		
-		tx.commit();
 		
 		pageUsers(request, response);
 	}
@@ -275,8 +271,6 @@ public class MainCtrl extends HttpServlet{
 					u2.setPassword(newpwd);
 					
 					hsession.saveOrUpdate(u2);
-					
-					tx.commit();
 					
 					sessione.setAttribute("user", u2);
 					

@@ -16,7 +16,7 @@
         <property name="regione" type="string">
             <column name="regione" length="80" not-null="true" />
         </property>
-        <set name="progettis" inverse="true">
+        <set name="progettis" inverse="true" lazy="false">
             <key>
                 <column name="idregione" not-null="true" />
             </key>

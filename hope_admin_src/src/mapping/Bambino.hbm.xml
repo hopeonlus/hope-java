@@ -37,13 +37,13 @@
         <property name="descrizione" type="string">
             <column name="descrizione" />
         </property>
-        <set name="adottantis" inverse="true">
+        <set name="adottantis" inverse="true" lazy="false">
             <key>
                 <column name="idbambino" not-null="true" />
             </key>
             <one-to-many class="mapping.Adottanti" />
         </set>
-        <set name="bambinoannos" inverse="true">
+        <set name="bambinoannos" inverse="true" lazy="false">
             <key>
                 <column name="idbambino" not-null="true" />
             </key>

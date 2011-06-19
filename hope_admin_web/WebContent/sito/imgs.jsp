@@ -195,7 +195,6 @@ Users user = (Users) session.getAttribute("user");
 		<td style="width:40%"><b>Prefisso grande</b> (ex. 'news_'): </td>
 		<td><input type="text" name="pref" /></td>
 		</tr>
-		</tr>
 		<tr id="row0">
 		<td style="width:40%"><b>Prefisso mini</b> (ex. 'news_mini_'): </td>
 		<td><input type="text" name="pref_mini" /></td>

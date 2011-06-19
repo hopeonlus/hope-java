@@ -25,7 +25,6 @@ public class AnagrafeCtrl extends HttpServlet{
 	private Session hsession = null;
 	private HttpSession sessione = null;
 	private String nextview = "";
-	private Transaction tx;
 	
 	/**
 	 * The doGet method of the servlet.
@@ -68,8 +67,7 @@ public class AnagrafeCtrl extends HttpServlet{
 	
 	public void controller (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		hsession = new Configuration().configure().buildSessionFactory().openSession();
-
+		Transaction tx = null;
 		try {
 			
 			hsession = HibernateUtil.currentSession();		
@@ -115,13 +113,15 @@ public class AnagrafeCtrl extends HttpServlet{
 					addFamiglia(request, response);
 			}
 
-
+			tx.commit();
+			
 		} catch (LoginException e) {
 			
 			Avviso err = new Avviso (e.getMessage());
 			request.setAttribute("err", err);
 			nextview = "/./error.jsp";
-
+			tx.rollback();
+			
 		} catch (Exception e) {
 			
 			Avviso err = new Avviso ("Errore indefinito. Ricorda di non usare il tasto REFRESH di Explorer!");
@@ -129,11 +129,11 @@ public class AnagrafeCtrl extends HttpServlet{
 			e.printStackTrace();
 			System.out.println(e.getMessage());
 			nextview = "/./error.jsp";
+			tx.rollback();
 			
 		} finally {
 
 			HibernateUtil.closeSession();
-			
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextview);
 			if (dispatcher != null) {
 				response.encodeURL(nextview);
@@ -170,8 +170,6 @@ public class AnagrafeCtrl extends HttpServlet{
 		
 		hsession.saveOrUpdate(f);
 		
-		tx.commit();
-		
 		viewScheda(request, response);
 	}
 
@@ -188,7 +186,7 @@ public class AnagrafeCtrl extends HttpServlet{
 		
 		hsession.delete(f);
 		
-		tx.commit();
+		
 		
 		viewScheda(request, response);
 	}
@@ -204,7 +202,7 @@ public class AnagrafeCtrl extends HttpServlet{
 		
 		hsession.delete(n);
 		
-		tx.commit();
+		
 		
 		pageAnagrafe(request, response);
 	}
@@ -223,6 +221,7 @@ public class AnagrafeCtrl extends HttpServlet{
 		String email = request.getParameter("email");
 		String codfiscale = request.getParameter("codfiscale");
 		String posta = request.getParameter("posta");
+		String comunicazioni = request.getParameter("comunicazioni");
 		
 		String nextpage = request.getParameter("nextpage");
 		
@@ -241,9 +240,10 @@ public class AnagrafeCtrl extends HttpServlet{
 		n.setEmail(email);
 		n.setCodfiscale(codfiscale);
 		n.setPosta(new Boolean(posta).booleanValue());
+		n.setComunicazioni(new Boolean(comunicazioni).booleanValue());
 		
 		hsession.saveOrUpdate(n);
-		tx.commit();
+		
 		
 		if(nextpage.equals("null"))
 			pageAnagrafe(request, response);
@@ -299,9 +299,8 @@ public class AnagrafeCtrl extends HttpServlet{
 		
 		if(op.equals("update")) {
 			
-			hsession = new Configuration().configure().buildSessionFactory().openSession();
 			hsession = HibernateUtil.currentSession();		
-			tx = hsession.beginTransaction();
+			Transaction tx = hsession.beginTransaction();
 			
 			String name = request.getParameter("name");
 			String value = request.getParameter("value");
@@ -326,6 +325,7 @@ public class AnagrafeCtrl extends HttpServlet{
 				n.setCitta(value);
 			
 			hsession.saveOrUpdate(n);
+			
 			tx.commit();
 
 			HibernateUtil.closeSession();
@@ -343,9 +343,8 @@ public class AnagrafeCtrl extends HttpServlet{
 			
 		} else if(op.equals("delete")) {
 
-			hsession = new Configuration().configure().buildSessionFactory().openSession();
 			hsession = HibernateUtil.currentSession();		
-			tx = hsession.beginTransaction();
+			Transaction tx = hsession.beginTransaction();
 
 			Query q = hsession.createQuery("FROM Anagrafe WHERE id = :id");
 			q.setString("id", id);

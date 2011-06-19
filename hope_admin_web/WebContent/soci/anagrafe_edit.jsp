@@ -160,9 +160,15 @@ function inoltra()
 				</TR>
 				<TR class="intestazione" align="center"><TD colspan="2">Informazioni POSTA :</TD></TR>
 				<TR>
-					<TD><B>Inviare comunicazioni via POSTA? </B></TD>
+					<TD><B>Inviare comunicazioni? </B></TD>
 					<TD>
-						<input type="radio" name="posta" value="true" <% if(n.isPosta()) out.print("checked");%>> Si &nbsp&nbsp&nbsp&nbsp&nbsp; <input type="radio" name="posta" value="false" <% if(!n.isPosta()) out.print("checked");%>> No
+						<input type="radio" name="comunicazioni" value="true" <% if(n.isComunicazioni()) out.print("checked");%>> si &nbsp&nbsp&nbsp&nbsp&nbsp; <input type="radio" name="comunicazioni" value="false" <% if(!n.isComunicazioni()) out.print("checked");%>> no
+					</TD>
+				</TR>
+				<TR>
+					<TD>&nbsp</TD>
+					<TD>
+						<input type="radio" name="posta" value="true" <% if(n.isPosta()) out.print("checked");%>> via posta &nbsp&nbsp&nbsp&nbsp&nbsp; <input type="radio" name="posta" value="false" <% if(!n.isPosta()) out.print("checked");%>> a mano
 					</TD>
 				</TR>
 				<TR>

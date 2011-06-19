@@ -13,7 +13,7 @@
 	            <param name="sequence">contoid</param>
 	        </generator>
         </id>
-        <many-to-one name="gruppo" class="mapping.Gruppo" fetch="select">
+        <many-to-one name="gruppo" class="mapping.Gruppo" fetch="select" lazy="false">
             <column name="gruppo" />
         </many-to-one>
         <property name="nome" type="string">
@@ -22,25 +22,25 @@
         <property name="mostra" type="boolean">
             <column name="mostra" />
         </property>
-        <set name="movimentisForDare" inverse="true">
+        <set name="movimentisForDare" inverse="true" lazy="false">
             <key>
                 <column name="dare" not-null="true" />
             </key>
             <one-to-many class="mapping.Movimenti" />
         </set>
-        <set name="scritturasForAvere" inverse="true">
+        <set name="scritturasForAvere" inverse="true" lazy="false">
             <key>
                 <column name="avere" not-null="true" />
             </key>
             <one-to-many class="mapping.Scrittura" />
         </set>
-        <set name="movimentisForAvere" inverse="true">
+        <set name="movimentisForAvere" inverse="true" lazy="false">
             <key>
                 <column name="avere" not-null="true" />
             </key>
             <one-to-many class="mapping.Movimenti" />
         </set>
-        <set name="scritturasForDare" inverse="true">
+        <set name="scritturasForDare" inverse="true" lazy="false">
             <key>
                 <column name="dare" not-null="true" />
             </key>

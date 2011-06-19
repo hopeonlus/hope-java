@@ -24,7 +24,17 @@ public class Anagrafe  implements java.io.Serializable {
      private String codfiscale;
      private String cognome;
      private boolean posta;
-     private Set famigliasForId1;
+     private boolean comunicazioni;
+    
+    public boolean isComunicazioni() {
+		return comunicazioni;
+	}
+
+	public void setComunicazioni(boolean comunicazioni) {
+		this.comunicazioni = comunicazioni;
+	}
+
+	private Set famigliasForId1;
      private Set socios;
      private Set famigliasForId2;
      private Set adottantis;
