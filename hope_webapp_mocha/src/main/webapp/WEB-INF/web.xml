@@ -1,0 +1,65 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+    <display-name>H.O.P.E. - Help Other People Everywhere</display-name>
+    
+	<description>
+		Sito HOPE ONLUS
+	</description>
+   	
+	<servlet>
+	        <servlet-name>HomePage</servlet-name>
+        	<servlet-class>controllers.MainCtrl</servlet-class>		
+	</servlet>
+	
+	<servlet>
+	        <servlet-name>NewsWeb</servlet-name>
+        	<servlet-class>controllers.NewsCtrl</servlet-class>		
+	</servlet>
+		
+	<servlet>
+	        <servlet-name>Progetti</servlet-name>
+        	<servlet-class>controllers.ProgettiCtrl</servlet-class>		
+	</servlet>
+	
+	<servlet>
+	        <servlet-name>AdozioniWeb</servlet-name>
+        	<servlet-class>controllers.AdozioniCtrl</servlet-class>		
+	</servlet>
+
+	<servlet>
+	        <servlet-name>Dalmondo</servlet-name>
+        	<servlet-class>controllers.DalmondoCtrl</servlet-class>		
+	</servlet>
+	
+<servlet-mapping>
+        	<servlet-name>HomePage</servlet-name>
+	        <url-pattern>/home</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+        	<servlet-name>NewsWeb</servlet-name>
+	        <url-pattern>/news</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+        	<servlet-name>Progetti</servlet-name>
+	        <url-pattern>/progetti</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+        	<servlet-name>AdozioniWeb</servlet-name>
+	        <url-pattern>/adozioni</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+        	<servlet-name>Dalmondo</servlet-name>
+	        <url-pattern>/dalmondo</url-pattern>
+	</servlet-mapping>
+	
+	<session-config>
+		<session-timeout>20</session-timeout>
+	</session-config>
+
+
+	
+
+</web-app>

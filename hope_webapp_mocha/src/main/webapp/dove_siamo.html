@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<title>Dove Siamo?</title>
+
+<!-- GOOGLE MAPS CODE -->
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAdo2z1IJJr5v4XMykZqTvtRSsG8wVc4CV4_7_kE7bjnzk8WwKdxR69eBpI4AhaHZgGgOfibuDKiiVaw"
+      type="text/javascript"></script>
+    <script type="text/javascript">
+
+    //<![CDATA[
+
+    function load() {
+      if (GBrowserIsCompatible()) {
+        var map = new GMap2(document.getElementById("map"));
+		map.addControl(new GSmallMapControl());
+		map.addControl(new GMapTypeControl());
+        map.setCenter(new GLatLng(45.772088,8.573649), 15);
+
+  		var point = new GLatLng(45.772088,8.573649);
+ 		map.addOverlay(createMarker(point, 1));
+      }
+    }
+	
+	function createMarker(point, number) {
+	  var marker = new GMarker(point);
+	  GEvent.addListener(marker, "click", function() {
+		marker.openInfoWindowHtml("<b>SEDE</b><br/>H.O.P.E. ONLUS<BR/>Via Paletta, 12<BR/>21021 Angera (VA)<BR/>Italia<BR/>Tel. 0331/960272<BR/>");
+	  });
+	  return marker;
+	}
+
+    //]]>
+</script>
+<!-- GOOGLE MAPS CODE -->
+
+</head>
+
+<body onload="load()" onunload="GUnload()">
+
+	<div id="map" style="width: 580px; height: 380px"></div>
+	
+</body>
+</html>

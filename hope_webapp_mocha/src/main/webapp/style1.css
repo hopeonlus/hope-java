@@ -1,0 +1,499 @@
+body {
+	font-family:"Lucida Grande",Geneva,Arial,Verdana,sans-serif;
+	font-size: 12px;
+	color:#000066;
+}
+
+a {
+	text-decoration: none;
+	color:#3300CC;
+}
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration:none;
+	color:#3300CC;
+}
+
+a:active {
+	text-decoration: none;
+}
+
+a:hover {
+	ext-decoration: underline;
+	olor:#FFFF00;
+	background-color:#FFFF00;
+}
+
+
+.content_home {
+	color: #000000;
+	font-size: 11px;
+}
+
+/*fonts per news */
+
+.data_news {
+	color: #666666;
+	font-size: 9px;
+}
+
+.bottom_text {
+	width:760px;
+	text-align:center;
+	font-size:11px;
+	font-stretch:condensed;
+	color:#000000;
+	order:1px solid #0000FF;
+	padding-top:5px;
+}
+
+
+/*fonts per form */
+
+.form {
+    font-family: verdana, tahoma, arial;
+    color: red;
+    font-size: 10.75px;
+    border-style: solid;
+    border-color: #006699;
+    border-width: 1px;
+    background: #f0f0f0;
+}
+
+.form_button{
+	font-family: verdana, tahoma, arial;
+    color: red;
+    font-size: 10.75px;
+}
+
+/* Font per menu dx */
+.style1 {
+			color:#CC0000;
+			font-size: 11px;
+}
+
+.calend{
+	font-family: tahoma;
+	color:#000000;
+	font-size: 9px;
+}
+
+.calend_w{
+	font-family: tahoma;
+	color:#FFFFFF;
+	font-size: 9px;
+}
+
+.calend_evento{
+	font-family: tahoma;
+	color:#FF0000;
+	font-size: 9px;
+	font-weight:900;
+}
+
+.calend_t{
+	font-family: tahoma;
+	color:#0000FF;
+	font-size: 12px;
+}
+
+.progetto {
+	font-size:12px;
+	font-weight: bold;
+	font-style: italic;
+	color: #FF0000;
+}
+
+.progetto_large {
+	font-size:16px;
+	font-weight: bold;
+	font-style: italic;
+	color: #FF0000;
+}
+
+div#container{
+	position:relative;
+	top:0px;
+	width: 760px;
+	margin: 0 auto;
+	text-align: left;
+	order-bottom: 2px solid #36c;
+}
+
+#banner{
+ 	position:absolute;
+	top: 0;
+	width: 760px;
+	height: 130px;
+}
+
+#menu{
+	position:absolute;
+	top: 130px;
+	left: 0px;
+	width: 600px;
+	height:19px;
+	order:1px solid #0000FF;
+}
+
+#testo{
+	width:430px;
+	min-height: 396px;
+	height: auto !important;
+	height: 396px;
+	padding-left:185px;
+	padding-top:12px;
+	padding-right:135px;
+	order:1px solid #0000FF;
+}
+
+#content{
+	position:absolute;
+	top: 130px;
+	left: 0px;
+	min-height: 396px;
+	height: auto !important;
+	height: 396px;
+	width: 760px;
+	verflow: auto;
+	background-color:#EFEFFB;
+	ackground-image:url(img/back_content.gif);
+	order:1px solid #0000FF;
+}
+
+#menu_sx{
+	position:absolute;
+	top: 12px;
+	left: 10px;
+	width: 165px;
+	height:330px;
+	order:1px solid #0000FF;
+}
+
+#menu_sx_content_1{
+	position:absolute;
+	top: 13px;
+	left: 11px;
+	width: 130px;
+	height:170px;
+	order:1px solid #0000FF;
+	text-align:center;
+}
+
+#menu_sx_content_2{
+	position:absolute;
+	top: 156px;
+	left: 7px;
+	width: 146px;
+	height:100px;
+	padding:1px;
+	order:1px solid #0000FF;
+}
+
+#menu_sx_content_3{
+	position:absolute;
+	top: 254px;
+	left: 13px;
+	width: 135px;
+	height:40px;
+	order:1px solid #0000FF;
+}
+
+#menu_sx_content_3_prossimamente{
+	position:absolute;
+	top: 245px;
+	left: 15px;
+	width: 135px;
+	height:40px;
+	order:1px solid #0000FF;
+}
+
+#try{
+	position:absolute;
+	top: 176px;
+	left: 200px;
+	width: 135px;
+	height:40px;
+	order:1px solid #0000FF;
+}
+
+#menu_dx{
+	position:absolute;
+	top: 12px;
+	right: 5px;
+	width: 130px;
+	height:90%;
+	order:1px solid #0000FF;
+	order-left:1px dashed #999999;
+	adding-left:4px;
+}
+
+#menu_dx_content{
+	position:absolute;
+	top: 8px;
+	left: 3px;
+	width: 130px;
+	height:150px;
+	order:1px solid #0000FF;
+}
+
+#center_{
+	position:absolute;
+	top: 178px;
+	left:0px;
+	width: 760px;
+	height:600px;
+	background-color:#FFFFFF;
+	order:1px solid #0000FF;
+}
+
+#bottom{
+	width: 760px;
+	height:21px;
+	background-image:url(img/main_10.jpg);
+	order:1px solid #0000FF;
+}
+
+div#commenti{display:none}
+div#commenti p{width: 200px;padding: 10px 0;
+    border:1px solid #68B0D8;background-color: #C8ECFF}
+
+#chisiamono{
+	display:none;
+}
+
+#attivitano{
+	display:none;
+}
+
+#statutono{
+	display:none;
+}
+
+table {empty-cells: show; border: 0}
+/* Stili per le tabelle*/
+TH#admin {
+			font: 15px Verdana, Arial;
+			color:#ffffff;
+			font-weight: bold;
+			text-align: center;
+			background-color: #959595;
+	}
+	
+TD#admin {
+			font: 15px Verdana, Arial;
+			color:#330099;
+			text-align: center;
+	}
+	
+TD#nome { 
+			font: 15px Verdana, Arial;
+			color:#330099;
+			text-align:left;
+			padding-left:30px;
+		}
+
+TD#prezzo{	
+			font: 15px Verdana, Arial;
+			color:#000000;
+			text-align: center;
+			font-weight:bold;
+		}
+
+TD#scheda{
+			font: 15px Verdana, Arial;
+			color:#330099;
+			text-align:left;
+			padding-left:40px;
+			padding-top:30px;
+		}
+
+TD#right{	
+			font: 15px Verdana, Arial;
+			color:#330099;
+			text-align:right;
+			padding-right:30px;
+}
+
+TD#cat{
+			font: 15px Verdana, Arial;
+			padding:3px;
+			color:#FF0000;
+			text-align:center;
+			line-height:35px;
+}
+
+TD#art1{
+			width:430px;
+			height:100px;
+			padding:8px;
+			vertical-align:top;
+			padding-bottom:10px;
+}
+
+TD#art23{
+			width:50%;
+			height:156px;
+			padding-left:8px;
+}
+
+UL.menu li{
+			list-style-image:url(img/fr1.gif);
+			font-family: Verdana, Arial, Helvetica, sans-serif;
+			color:#FF0000;
+			font-size: 13px;
+			padding-left:0px;
+}
+
+#admin_content{
+	position:absolute;
+	top: 148px;
+	left: 0px;
+	min-height: 396px;
+	height: auto !important;
+	height: 415px;
+	width: 760px;
+	verflow: auto;
+	background-color:#FFFFFF;
+	order:1px solid #0000FF;
+}
+
+#admin_testo{
+	width:600px;
+	min-height: 396px;
+	height: auto !important;
+	height: 396px;
+	padding-left:200px;
+	padding-top:12px;
+	order:1px solid #0000FF;
+}
+
+#admin_menu_sx_content_1{
+	position:absolute;
+	padding-left:10px;
+	top: 13px;
+	left: 12px;
+	width: 140px;
+	height:300px;
+	order:1px solid #0000FF;
+	text-align:center;
+}
+
+TR#row0{ background-color:#FFFFFF }
+TR#row1{ background-color:#F1F3F5 }
+
+.tinserimento {border: 1px dotted #CCC; font: 12px Arial, sans-serif; 
+		color: #000066; font-weight: bold; background-color: #FFF; 
+		width: 90%; text-align: left;}
+		
+.intestazione {font: 12px Verdana, sans-serif; color: #000066; 
+		font-weight: bold; background-color: #E6E6E6; width: 14%;}
+
+.testo {
+font-size:11px;
+		font-family:Geneva, Arial, Helvetica, sans-serif;
+		color: #000066}
+
+#menunew {
+	position:absolute;
+	top: 103px;
+	right: 4px;
+	width: 510px;
+	height:27px;
+	order:1px solid #FF0000;
+}
+
+#menunew ul{
+	margin:0;
+	padding:0;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+}
+
+#menunew li{
+	padding: 0;
+	float: left;
+	list-style: none;
+	margin:0 3px;
+}
+#menunew a{
+	display: block;
+	width: 95px;
+	height:28px;
+	color: #FFFFFF;
+	padding-top:10px;
+	padding: 7px 0px;
+	text-decoration: none;
+	font-weight: bold;
+	text-align: center;
+	margin: 0;
+	background-color: transparent !important;
+	background-image:  url(img/back_tab.gif)!important ;
+	background-repeat: no-repeat;
+	background-position: top;	
+}
+
+#menunew li#sel{
+	padding: 0;
+	float: left;
+	list-style: none;
+	margin:0 3px;
+}
+#menunew a#sel{
+	display: block;
+	width: 95px;
+	color: #003399;
+	/* natale */
+	/* color:#950301;	 */
+	padding: 7px 0px;
+	text-decoration: none;
+	font-weight: bold;
+	text-align: center;
+	margin: 0;
+	background-color: transparent !important;
+	background-image:  url(img/back_tab_sel.gif)!important ;
+	background-repeat: no-repeat;
+	background-position: top;	
+}
+
+h1, h2, h3, h4 {
+	vertical-align:text-top;
+	font-style:normal;
+	margin:0pt;
+	padding:0pt;
+	margin-bottom:0.3em;
+	padding-bottom:0em;
+}
+
+/* titolo grande (title_news_big)*/
+h1 {
+	color:#000066;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+/* titolo (title_news)*/
+h2 {
+	color:#000066;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+/* sottitoli (subtitle_news) */
+h3 {
+	color: #330066;
+	font-size: 13px;
+	font-weight:normal;
+}
+
+/* usato per la data nelle news */
+h4 {
+	color:#888888;	
+	font-size:11px;
+	border-bottom:1px solid #CCCCCC;
+	font-weight:normal;
+	line-height:18px;
+}
