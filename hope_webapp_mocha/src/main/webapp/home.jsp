@@ -177,9 +177,9 @@ function isValid(){
 					<TD><img src="img/cornice/AngDxUp_dx.gif" border="0"></TD>
 				</TR>
 				<TR>
-					<TD><img src="img/cornice/tileSx_dx.gif" width="20" height="55"></TD>
+					<TD><img src="img/cornice/tileSx_dx.gif" width="20" height="85"></TD>
 					<TD></TD>
-					<TD><img src="img/cornice/tileDx_dx.gif" width="24" height="55"></TD>
+					<TD><img src="img/cornice/tileDx_dx.gif" width="24" height="85"></TD>
 				</TR>
 				<TR>
 					<TD><img src="img/cornice/AngSxDown_dx.gif"></TD>
@@ -312,10 +312,29 @@ function isValid(){
 			</div>
 			<div id="menu_sx_content_2">
 				<TABLE width="90" align="center" style="padding-left:0px " bgcolor="#FFFFFF">
-					<FORM ACTION="home" METHOD="POST" name="newsletter" onSubmit="return isValid()">
+				
 					<TR>
 						<TD colspan="2"><h3><b>Newsletter</b></h3></TD>
 					</TR>
+				<form action="http://newsletter.hopeonlus.it/index.php?page=mail&" name="subscribe" onsubmit="javascript:return checkEmail(this);" method="post">
+				  <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0">
+				    <tr>
+				      <td width="94%"><strong>
+				        <input name="email" type="text" class="box" id="email2" value="Inserisci e-mail qui" size="20" onfocus="this.value='';" >
+				        <input name="group" type="hidden" id="group[]" value="">
+				        </strong></td>
+				    </tr>
+				    <tr>
+				      <td valign="middle"> <div align="center">
+				          <input name="subscribe" type="hidden" id="subscribe" value="true">
+				          <input name="Submit2" type="submit" class="form_button" value="Iscriviti">
+				        </div></td>
+				    </tr>
+				  </table>
+				</form>
+				<!--
+					<FORM ACTION="home" METHOD="POST" name="newsletter" onSubmit="return isValid()">
+					
 					<TR>
 						<TD colspan="2" style="padding-right:5px "><input name="email" type="text" size="18" class="form" value="Inserisci e-mail qui" onClick="resetF()" onMouseOver="toolTip('Isciviti alla newsletter della HOPE<BR> per esser sempre aggiornato su <BR>Iniziative e News dell associazione')" onMouseOut="toolTip()"></td>
 					</tr>
@@ -326,6 +345,7 @@ function isValid(){
 						<INPUT TYPE="hidden" NAME="action" VALUE="INSERT"></INPUT>
 						<INPUT TYPE="hidden" NAME="what" VALUE="NEWSLETTER"></INPUT>
 				  </FORM>
+				  -->
 					</TR>
 				</TABLE>
 			</div>
@@ -417,6 +437,7 @@ function isValid(){
 			</TABLE>
 		</div>
 		<div id="testo">
+		<!--
 			<TABLE cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF" align="center">
 				<TR>
 					<TD><IMG src="img/cornice/AngSxUp_dx.gif" border="0"></TD>
@@ -458,7 +479,40 @@ function isValid(){
 					<TD><img src="img/cornice/AngDxDown_dx.gif"></TD>
 				</TR>
 			</TABLE>
-			
+			-->
+			<TABLE cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF" align="center">
+				<TR>
+					<TD><IMG src="img/cornice/AngSxUp_dx.gif" border="0"></TD>
+					<TD><img src="img/cornice/TileUp_dx.gif" width="388" height="16" border="0"></TD>
+					<TD><img src="img/cornice/AngDxUp_dx.gif" border="0"></TD>
+				</TR>
+				<TR>
+					<TD><img src="img/cornice/tileSx_dx.gif" width="20" height="120"></TD>
+					<TD>
+					
+						<table width="100%">
+							<TR>
+								<TD align="center">
+								<h4 align="left">14 Gennaio 2011</h4>
+								<h1 style="color:#990000">
+									Disponibile on-line il primo notiziario del 2012!
+								</h1><br/>
+								<div align="center"><a href="news?action=SHOW&what=NEWS&id=33">
+								<img src="img/link.png" width="12"/> Leggi</a> oppure <a href="download/notiziari/notiziario_gennaio_2012.pdf">
+								<img src="img/pdf.gif"/> Scarica</a></div>
+								</TD>
+							</TR>
+						</table>					
+					</TD>
+					<TD><img src="img/cornice/tileDx_dx.gif" width="24" height="120"></TD>
+				</TR>
+				<TR>
+					<TD><img src="img/cornice/AngSxDown_dx.gif"></TD>
+					<TD><img src="img/cornice/tileDown_dx.gif" width="388" height="16"></TD>
+					<TD><img src="img/cornice/AngDxDown_dx.gif"></TD>
+				</TR>
+			</TABLE>
+
 			<TABLE cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF" align="center">
 				<TR>
 					<TD><IMG src="img/cornice/AngSxUp_dx.gif" border="0"></TD>
@@ -472,7 +526,7 @@ function isValid(){
 						<table width="100%">
 							<TR>
 								<TD align="center">
-								<h4 align="left">5 Maggio 2011</h4>
+								<h4 align="left">05 Gennaio 2011</h4>
 								<h1 style="color:#990000">
 									Dona il tuo <b>5 x MILLE</b> alla H.O.P.E!
 								</h1>
@@ -483,7 +537,7 @@ function isValid(){
 								<h2>
 								<b>92013500126</b>
 								<br/><br/>
-								<div align="center"><a href="http://www.hopeonlus.it/home?action=SHOW&what=cinquexmille">MAGGIORI INFORMAZIONI</a></div>
+								<div align="center"><a href="http://www.hopeonlus.it/home?action=SHOW&what=cinquexmille"><img src="img/link.png" width="12"/> MAGGIORI INFORMAZIONI</a></div>
 								</h2>
 								</TD>
 							</TR>
@@ -517,9 +571,9 @@ function isValid(){
 								</h1>
 								<h3>
 								On-line le immagini della visita del Presidente al centro Lar Joana Angelica di Salvador de Bahia.
-								</h3>
+								</h3><br/>
 								<div align="center">
-									<a style="color:red" href="http://www.hopeonlus.it/news?action=SHOW&what=NEWS&id=30&x=PHOTOGALLERY">guarda le foto</a>
+									<a style="color:red" href="http://www.hopeonlus.it/news?action=SHOW&what=NEWS&id=30&x=PHOTOGALLERY"><img src="img/link.png" width="12"/> guarda le foto</a>
 								</div>
 								</h2>
 								</TD>
@@ -553,9 +607,9 @@ function isValid(){
 								</h1>
 								<h3>
 								Inaugurato il centro per la cura di bambini malnutriti presso l'ospedale St. Luke di Wolisso, Giorgio Gadiva era la'.
-								</h3>
+								</h3><br/>
 								<div align="center">
-									<a style="color:red" href="http://www.hopeonlus.it/news?action=SHOW&what=NEWS&id=31&x=PHOTOGALLERY">guarda le foto .. .</a>
+									<a style="color:red" href="http://www.hopeonlus.it/news?action=SHOW&what=NEWS&id=31&x=PHOTOGALLERY"><img src="img/link.png" width="12"/> guarda le foto .. .</a>
 								</div>
 								</h2>
 								</TD>
@@ -621,7 +675,7 @@ function isValid(){
 								<h3>
 								<a href="http://www.hopeonlus.it/progetti?action=SHOW&what=PROGETTO&id=9">
 								Lar Joana Angelica<br/>Brasile<br/>
-								<img src="http://www.hopeonlus.it/img/news/brasile2006/brasil_2006_3.jpg" alt="" width="130" border="0" style="padding-top:7px;"/>
+								<img src="img/news/brasile2006/brasil_2006_3.jpg" alt="" width="130" border="0" style="padding-top:7px;"/>
 								</a>
 								</h3>
 								</TD>
@@ -653,7 +707,7 @@ function isValid(){
 								<h3>
 								<a href="http://www.hopeonlus.it/progetti?action=SHOW&what=PROGETTO&id=8">
 								St. Luke Hospital<br/>Etiopia<br/>
-								<img src="http://www.hopeonlus.it/img/news/etiopia2006/etiopia_2006_24.jpg" alt="" width="130" border="0" style="padding-top:7px;"/>
+								<img src="img/news/etiopia2006/etiopia_2006_24.jpg" alt="" width="130" border="0" style="padding-top:7px;"/>
 								</a>
 								</h3>
 								</TD>

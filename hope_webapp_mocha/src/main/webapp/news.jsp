@@ -83,7 +83,7 @@
 	int d = 1;
 	
 	String[] mesi = {"Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembr", "Ottobre", "Novembr", "Dicembre"};
-	String[] giorni = {"", "Domenica", "LunedÃ", "MartedÃ", "MercoledÃ", "GiovedÃ", "VenerdÃ", "Sabato"};
+	String[] giorni = {"", "Domenica", "LunedÏ", "MartedÏ", "MercoledÏ", "GiovedÏ", "VenerdÏ", "Sabato"};
 	String month_str = mesi[month];%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
@@ -153,18 +153,18 @@ function Alto(x){
 	img = new Image();
 	img.src = x;
 	if(img.height > img.width)
-		document.write("<a href=\""+x+"\"><img src=\"" + x + "\" height=\"300\" name=\"photo\" border=\"1\"/></a>");
+		document.write("<a href=\""+x+"\"><img src=\"" + x + "\" height=\"500\" name=\"photo\" border=\"1\"/></a>");
 	else
-		document.write("<a href=\""+x+"\"><img src=\"" + x + "\" width=\"350\" name=\"photo\" border=\"1\"/></a>");
+		document.write("<a href=\""+x+"\"><img src=\"" + x + "\" width=\"550\" name=\"photo\" border=\"1\"/></a>");
 }
 
 function AltoGallery(x){
 	img = new Image();
 	img.src = x;
 	if(img.height > img.width)
-		document.write("<img src=\"" + x + "\" height=\"90\" border=\"1\">");
+		document.write("<img src=\"" + x + "\" height=\"170\" border=\"1\">");
 	else
-		document.write("<img src=\"" + x + "\" width=\"90\" border=\"1\">");
+		document.write("<img src=\"" + x + "\" width=\"170\" border=\"1\">");
 }
 
 // -->
@@ -279,9 +279,9 @@ function AltoGallery(x){
 								}
 							
 							if((month == mese_oggi)&&(year == anno_oggi)&&(d == day)) {
-								//C'Ã‹ un evento OGGI??
+								//C'Ë un evento OGGI??
 								if(ok == -1) { %>
-									<TD  bgcolor="#000099" align="center"><span onMouseOver="toolTip('Oggi Ã‹ <%= giorni[i] + " " + d + " " + month_str + " " + year %>')" onMouseOut="toolTip()"><FONT class="calend_w"><B><%= d %></B></FONT></span></TD>
+									<TD  bgcolor="#000099" align="center"><span onMouseOver="toolTip('Oggi Ë <%= giorni[i] + " " + d + " " + month_str + " " + year %>')" onMouseOut="toolTip()"><FONT class="calend_w"><B><%= d %></B></FONT></span></TD>
 								<% } else {  %>
 									<TD  bgcolor="#000099" align="center"><a href="news?action=SHOW&what=NEWS&id=<%= ok %>" onMouseOver="toolTip('<table style=font-size:9px><TR><TD colspan=2 align=center><font style=text-transform:uppercase; size=-2><B><%= tmp.getTitolo() %></B></font></td></TR><tr><td>Dove :</td><td><%= tmp.getLuogo() %></td></tr><tr><td>Ore :</td><td><%= tmp.getOra() %></td></tr></table>')" onMouseOut="toolTip()"><FONT class="calend_w"><B><%= d %></B></FONT></a></TD>
 								<% }
@@ -319,9 +319,9 @@ function AltoGallery(x){
 									}
 								
 								if((month == mese_oggi)&&(year == anno_oggi)&&(d == day)) {
-								//C'Ã‹ un evento OGGI??
+								//C'Ë un evento OGGI??
 								if(ok == -1) { %>
-									<TD  bgcolor="#000099" align="center"><span onMouseOver="toolTip('Oggi Ã‹ <%= giorni[i] + " " + d + " " + month_str + " " + year %>')" onMouseOut="toolTip()"><FONT class="calend_w"><B><%= d %></B></FONT></span></TD>
+									<TD  bgcolor="#000099" align="center"><span onMouseOver="toolTip('Oggi Ë <%= giorni[i] + " " + d + " " + month_str + " " + year %>')" onMouseOut="toolTip()"><FONT class="calend_w"><B><%= d %></B></FONT></span></TD>
 								<% } else {  %>
 									<TD  bgcolor="#000099" align="center"><a href="news?action=SHOW&what=NEWS&id=<%= ok %>" onMouseOver="toolTip('<table style=font-size:9px><TR><TD colspan=2 align=center><font style=text-transform:uppercase; size=-2><B><%= tmp.getTitolo() %></B></font></td></TR><tr><td>Dove :</td><td><%= tmp.getLuogo() %></td></tr><tr><td>Ore :</td><td><%= tmp.getOra() %></td></tr></table>')" onMouseOut="toolTip()"><FONT class="calend_w"><B><%= d %></B></FONT></a></TD>
 								<% }
@@ -354,10 +354,9 @@ function AltoGallery(x){
 			
 <% 			if(x.equals("NEWS")) { %>
 			
-			<div id="menu_dx">
+			<div id="menu_dx" style="padding-top:30px">
 				<font class="style1">
 					<BR><BR>
-					<font style="color:#0000CC; font-size:13px">Menu News :<BR><BR></font>
 					&nbsp&nbsp&nbsp&nbsp;<img src="img/fr1_giu.gif" border="0px"> &nbsp&nbsp;NOTIZIA<BR>
 					&nbsp&nbsp&nbsp&nbsp;<a href="news?action=SHOW&what=NEWS&id=<%= id %>&x=PHOTOGALLERY"><img src="img/fr1.gif" border="0px"> &nbsp&nbsp;IMMAGINI</a><BR>
 					&nbsp&nbsp&nbsp&nbsp;<a href="news?action=SHOW&what=NEWS&id=<%= id %>&x=DOWNLOAD"><img src="img/fr1.gif" border="0px"> &nbsp&nbsp;DOWNLOAD</a><BR>
@@ -372,7 +371,7 @@ function AltoGallery(x){
 					<FONT FACE="VERDANA, ARIAL" SIZE="1" COLOR="#000099"> 
 					<a href="home">H.O.P.E.</a> > 
 					<a href="news">News</a> > 
-					<%= titolo %></FONT>
+					<a href="news?action=SHOW&what=NEWS&id=<%= id %>"><%= titolo %></a></FONT>
 				</div>
 				<TABLE width="440px" border="0" cellpadding="0" cellspacing="0">
 					<TR>
@@ -381,13 +380,15 @@ function AltoGallery(x){
 							<h1 style="padding-left:10px;"><%= titolo %></h1>
 						</TD>
 					</TR>
-					<TR>
-						<TD style="padding-bottom:10px;">
-							<h3 style="padding-left:10px;"><%= sottotitolo %></h3>
-						</TD>
-					</TR>
+					<% if(sottotitolo != null && !sottotitolo.isEmpty()) { %>
+						<TR>
+							<TD style="padding-bottom:10px;">
+								<h3 style="padding-left:10px;"><%= sottotitolo %></h3>
+							</TD>
+						</TR>
+					<% } %>
 				</TABLE>
-				<div style="width:430px; padding-left:5px; padding-right:5px; padding-top:10px; padding-bottom:15px;">
+				<div style="width:430px; padding-left:5px; padding-right:5px;padding-bottom:15px;">
 					<TABLE align="left">
 						<TR>
 							<TD style="padding-bottom: 10px; padding-right:10px">
@@ -397,16 +398,16 @@ function AltoGallery(x){
 							</TD>
 						</TR>
 					</TABLE>
-					<BR><%= testo %>
+					<p align="left"><%= testo %></p>
 				</div>
 		  </div>
 		  
 <%			} else if(x.equals("PHOTO")){   %>
 			
-			<div id="menu_dx">
+			<!--
+			<div id="menu_dx" style="padding-top:30px">
 				<font class="style1">
 					<BR><BR>
-					<font style="color:#0000CC; size:13px">Menu News :<BR><BR></font>
 					&nbsp&nbsp&nbsp&nbsp;<a href="news?action=SHOW&what=NEWS&id=<%= id %>"><img src="img/fr1.gif" border="0px"> &nbsp&nbsp;NOTIZIA</a><BR>
 					&nbsp&nbsp&nbsp&nbsp;<a href="news?action=SHOW&what=NEWS&id=<%= id %>&x=PHOTOGALLERY"><img src="img/fr1_giu.gif" border="0px"> &nbsp&nbsp;IMMAGINI</A><BR>
 					&nbsp&nbsp&nbsp&nbsp;<a href="news?action=SHOW&what=NEWS&id=<%= id %>&x=DOWNLOAD"><img src="img/fr1.gif" border="0px"> &nbsp&nbsp;DOWNLOAD</a><BR>
@@ -414,14 +415,14 @@ function AltoGallery(x){
 					&nbsp&nbsp&nbsp&nbsp;<a href=""><img src="img/fr1.gif" border="0px"> &nbsp&nbsp;INVIA PAGINA</a><BR>
 				</font>
 			</div>
-			
+			-->
 			
 			<div id="testo">
 				<div style="padding-top:3px; color:#000099;">
 					<FONT FACE="VERDANA, ARIAL" SIZE="1" COLOR="#000099"> 
 					<a href="home">H.O.P.E.</a> > 
 					<a href="news">News</a> > 
-					<%= titolo %></FONT>
+					<a href="news?action=SHOW&what=NEWS&id=<%= id %>"><%= titolo %></a></FONT>
 				</div> 
 				<div align="center" style="padding-top:25px ">
 					<% if(ListaImg != null) { 
@@ -430,6 +431,7 @@ function AltoGallery(x){
 							Alto("<%= img_src %>");
 						</script>
 						<BR>
+						<div align="center" style="padding-top: 15px; padding-bottom: 15px;">
 						<% if(prev != null) { %>
 							<a href="news?action=SHOW&what=NEWS&id=<%= id %>&x=PHOTO&n_img=<%= prev %>"><img src="img/indietro_on.gif" border="0"></a>
 						<% } else {  %>
@@ -453,6 +455,7 @@ function AltoGallery(x){
 						
 						<input type="button" class="form_button" value=">>" name="B1" onClick="forward()">
 						// -->
+						</div>
 					<% } else { %>
 						<font class="subtitle_news"><BR><BR>Non sono disponibili immagini</font>
 					<% } %>
@@ -461,10 +464,9 @@ function AltoGallery(x){
 
 <%			} else if(x.equals("DOWNLOAD")) { %>
 			
-			<div id="menu_dx">
+			<div id="menu_dx" style="padding-top:30px">
 				<font class="style1">
 					<BR><BR>
-					<font style="color:#0000CC; size:13px">Menu News :<BR><BR></font>
 					&nbsp&nbsp&nbsp&nbsp;<a href="news?action=SHOW&what=NEWS&id=<%= id %>"><img src="img/fr1.gif" border="0px"> &nbsp&nbsp;NOTIZIA</a><BR>
 					&nbsp&nbsp&nbsp&nbsp;<a href="news?action=SHOW&what=NEWS&id=<%= id %>&x=PHOTOGALLERY"><img src="img/fr1.gif" border="0px"> &nbsp&nbsp;IMMAGINI</a><BR>
 					&nbsp&nbsp&nbsp&nbsp;<img src="img/fr1_giu.gif" border="0px"> &nbsp&nbsp;DOWNLOAD</a><BR>
@@ -479,15 +481,16 @@ function AltoGallery(x){
 					<FONT FACE="VERDANA, ARIAL" SIZE="1" COLOR="#000099"> 
 					<a href="home">H.O.P.E.</a> > 
 					<a href="news">News</a> > 
-					<%= titolo %></FONT>
+					<a href="news?action=SHOW&what=NEWS&id=<%= id %>"><%= titolo %></a></FONT>
 				</div> 
 			</div>
 <%			} else if(x.equals("PHOTOGALLERY")) {   %>
 			
-			<div id="menu_dx">
+			<!--
+			<div id="menu_dx" style="padding-top:30px">
 				<font class="style1">
 					<BR><BR>
-					<font style="color:#0000CC; size:12px">Menu News :<BR><BR></font>
+					
 					&nbsp&nbsp&nbsp&nbsp;<a href="news?action=SHOW&what=NEWS&id=<%= id %>"><img src="img/fr1.gif" border="0px"> &nbsp&nbsp;NOTIZIA</a><BR>
 					&nbsp&nbsp&nbsp&nbsp;<img src="img/fr1_giu.gif" border="0px"> &nbsp&nbsp;IMMAGINI<BR>
 					&nbsp&nbsp&nbsp&nbsp;<a href="news?action=SHOW&what=NEWS&id=<%= id %>&x=DOWNLOAD"><img src="img/fr1.gif" border="0px"> &nbsp&nbsp;DOWNLOAD</a><BR>
@@ -495,14 +498,14 @@ function AltoGallery(x){
 					&nbsp&nbsp&nbsp&nbsp;<a href=""><img src="img/fr1.gif" border="0px"> &nbsp&nbsp;INVIA PAGINA</a><BR>
 				</font>
 			</div>
-			
+			-->
 			
 			<div id="testo">
 				<div style="padding-top:3px; color:#000099;">
 					<FONT FACE="VERDANA, ARIAL" SIZE="1" COLOR="#000099"> 
 					<a href="home">H.O.P.E.</a> > 
 					<a href="news">News</a> > 
-					<%= titolo %></FONT>
+					<a href="news?action=SHOW&what=NEWS&id=<%= id %>"><%= titolo %></a></FONT>
 				</div>
 				
 				<div align="center" style="padding-top:20px; padding-right: 10px">
@@ -511,7 +514,7 @@ function AltoGallery(x){
 						<%if(ListaImg != null){
 							for(int i = 0; i < ListaImg.size(); i++){
 								Immagini tmp = (Immagini) ListaImg.get(i);
-								if((i%4 == 0)&&(i > 0)){ %>
+								if((i%3 == 0)&&(i > 0)){ %>
 						</tr>
 						<tr>
 						<% } %>

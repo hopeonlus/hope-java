@@ -36,7 +36,7 @@ public class NewsCtrl extends HttpServlet{
 	Session hsession = null; 
 	String nextview = "";
 	String pag = "";
-	static int n_per_pag = 5; // 5 risultati per pagina;
+	static int n_per_pag = 15; // 15 risultati per pagina;
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
