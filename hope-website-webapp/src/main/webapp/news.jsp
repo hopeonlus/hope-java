@@ -509,7 +509,7 @@ function AltoGallery(x){
 				</div>
 				
 				<div align="center" style="padding-top:20px; padding-right: 10px">
-					<TABLE border="1">
+					<TABLE>
 						<TR>
 						<%if(ListaImg != null){
 							for(int i = 0; i < ListaImg.size(); i++){

@@ -6,12 +6,10 @@
         Auto-generated mapping file from
         the hibernate.org cfg2hbm engine
 -->
-    <class name="mapping.Pagamentosoci" table="pagamentosoci" schema="public">
+    <class name="mapping.Pagamentosoci" table="pagamentosoci">
         <id name="id" type="integer">
             <column name="id" />
-            <generator class="sequence">
-	            <param name="sequence">pagamentoid</param>
-	        </generator>
+           <generator class="native"/>
         </id>
         <many-to-one name="socio" class="mapping.Socio" fetch="select" lazy="false">
             <column name="tessera" not-null="true" />

@@ -154,18 +154,18 @@ function Alto(x){
 	img = new Image();
 	img.src = x;
 	if(img.height > img.width)
-		document.write("<img src=\"" + x + "\" height=\"300\" name=\"photo\" border=\"1\">");
+		document.write("<img src=\"" + x + "\" height=\"500\" name=\"photo\" border=\"1\">");
 	else
-		document.write("<img src=\"" + x + "\" width=\"350\" name=\"photo\" border=\"1\">");
+		document.write("<img src=\"" + x + "\" width=\"550\" name=\"photo\" border=\"1\">");
 }
 
 function AltoGallery(x){
 	img = new Image();
 	img.src = x;
 	if(img.height > img.width)
-		document.write("<img src=\"" + x + "\" height=\"120\" border=\"1\">");
+		document.write("<img src=\"" + x + "\" height=\"170\" border=\"1\">");
 	else
-		document.write("<img src=\"" + x + "\" width=\"120\" border=\"1\">");
+		document.write("<img src=\"" + x + "\" width=\"170\" border=\"1\">");
 }
 
 // -->
@@ -340,17 +340,7 @@ function AltoGallery(x){
 						%>
 				</TABLE>
 			</div>
-				<div id="menu_sx_content_2" align="center">
-					<BR>
-					<font class="subtitle_news"><strong>NEWS</strong></font>
-						<font size="2" face="Tahoma">
-							<div align="center">
-								<marquee direction="up" scrollAmount=1 width="115" height="110" bgcolor="#FFFFFF" scrolldelay="50">
-									<%= high %>
-								</marquee>
-							</div>
-					</font>
-				</div>
+				
 			</div>
 			
 <% 			if(x.equals("PROGETTO")) { %>
@@ -452,6 +442,7 @@ function AltoGallery(x){
 		  
 <%			} else if(x.equals("PHOTO")){   %>
 			
+			<!--
 			<div id="menu_dx">
 				<font class="style1">
 					<BR><BR>
@@ -463,7 +454,7 @@ function AltoGallery(x){
 					&nbsp&nbsp&nbsp&nbsp;<a href=""><img src="img/fr1.gif" border="0px"> &nbsp&nbsp;INVIA PAGINA</a><BR>
 				</font>
 			</div>
-			
+			-->
 			
 			<div id="testo">
 				<div style="padding-top:3px; color:#000099;">
@@ -535,6 +526,7 @@ function AltoGallery(x){
 			</div>
 <%			} else if(x.equals("PHOTOGALLERY")) {   %>
 			
+			<!--
 			<div id="menu_dx">
 				<font class="style1">
 					<BR><BR>
@@ -546,7 +538,7 @@ function AltoGallery(x){
 					&nbsp&nbsp&nbsp&nbsp;<a href=""><img src="img/fr1.gif" border="0px"> &nbsp&nbsp;INVIA PAGINA</a><BR>
 				</font>
 			</div>
-			
+			-->
 			
 			<div id="testo">
 				<div style="padding-top:3px; color:#000099;">
@@ -558,7 +550,7 @@ function AltoGallery(x){
 				</div>
 				
 				<div align="center" style="padding-top:20px; padding-right: 10px">
-					<TABLE border="1">
+					<TABLE>
 						<TR>
 						<%if(ListaImg != null){
 							for(int i = 0; i < ListaImg.size(); i++){

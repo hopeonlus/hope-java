@@ -6,7 +6,7 @@
         Auto-generated mapping file from
         the hibernate.org cfg2hbm engine
 -->
-    <class name="mapping.Azionista" table="azionista" schema="public">
+    <class name="mapping.Azionista" table="azionista">
         <composite-id name="id" class="mapping.AzionistaId">
             <key-property name="id" type="integer">
                 <column name="id" />

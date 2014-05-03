@@ -1,7 +1,11 @@
+
+@import url(http://fonts.googleapis.com/css?family=Abel);
 body {
-	font-family:"Lucida Grande",Geneva,Arial,Verdana,sans-serif;
-	font-size: 12px;
+	font-family: 'Abel', sans-serif;
+	font-size: 13px;
 	color:#000066;
+	margin: 0px;
+	background-color:#f7f6fe;
 }
 
 a {
@@ -54,7 +58,6 @@ a:hover {
 /*fonts per form */
 
 .form {
-    font-family: verdana, tahoma, arial;
     color: red;
     font-size: 10.75px;
     border-style: solid;
@@ -64,7 +67,6 @@ a:hover {
 }
 
 .form_button{
-	font-family: verdana, tahoma, arial;
     color: red;
     font-size: 10.75px;
 }
@@ -76,26 +78,22 @@ a:hover {
 }
 
 .calend{
-	font-family: tahoma;
 	color:#000000;
-	font-size: 9px;
+	font-size: 0.7em;
 }
 
 .calend_w{
-	font-family: tahoma;
 	color:#FFFFFF;
 	font-size: 9px;
 }
 
 .calend_evento{
-	font-family: tahoma;
 	color:#FF0000;
 	font-size: 9px;
 	font-weight:900;
 }
 
 .calend_t{
-	font-family: tahoma;
 	color:#0000FF;
 	font-size: 12px;
 }
@@ -128,6 +126,9 @@ div#container{
 	top: 0;
 	width: 760px;
 	height: 130px;
+	-webkit-box-shadow: -1px -1px 28px rgba(50, 50, 50, 0.48);
+-moz-box-shadow:    -1px -1px 28px rgba(50, 50, 50, 0.48);
+box-shadow:         -1px -1px 28px rgba(50, 50, 50, 0.48);
 }
 
 #menu{
@@ -162,6 +163,10 @@ div#container{
 	background-color:#EFEFFB;
 	ackground-image:url(img/back_content.gif);
 	order:1px solid #0000FF;
+	border-top: 3px solid #330066;
+	-webkit-box-shadow: -1px -1px 28px rgba(50, 50, 50, 0.48);
+-moz-box-shadow:    -1px -1px 28px rgba(50, 50, 50, 0.48);
+box-shadow:         -1px -1px 28px rgba(50, 50, 50, 0.48);
 }
 
 #menu_sx{
@@ -342,7 +347,6 @@ TD#art23{
 
 UL.menu li{
 			list-style-image:url(img/fr1.gif);
-			font-family: Verdana, Arial, Helvetica, sans-serif;
 			color:#FF0000;
 			font-size: 13px;
 			padding-left:0px;
@@ -394,7 +398,6 @@ TR#row1{ background-color:#F1F3F5 }
 
 .testo {
 font-size:11px;
-		font-family:Geneva, Arial, Helvetica, sans-serif;
 		color: #000066}
 
 #menunew {
@@ -409,7 +412,6 @@ font-size:11px;
 #menunew ul{
 	margin:0;
 	padding:0;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size:11px;
 }
 
@@ -430,10 +432,12 @@ font-size:11px;
 	font-weight: bold;
 	text-align: center;
 	margin: 0;
-	background-color: transparent !important;
-	background-image:  url(img/back_tab.gif)!important ;
+	background-color: #330066 !important;
+	ackground-image:  url(img/back_tab.gif)!important ;
 	background-repeat: no-repeat;
-	background-position: top;	
+	background-position: top;		
+	-moz-border-radius: 6px;
+	border-radius: 6px;
 }
 
 #menunew li#sel{
@@ -453,10 +457,13 @@ font-size:11px;
 	font-weight: bold;
 	text-align: center;
 	margin: 0;
-	background-color: transparent !important;
-	background-image:  url(img/back_tab_sel.gif)!important ;
+	background-color: #efeffb !important;
+	ackground-image:  url(img/back_tab_sel.gif)!important ;
 	background-repeat: no-repeat;
-	background-position: top;	
+	background-position: top;		
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	border: 1px solid #330066;
 }
 
 h1, h2, h3, h4 {
@@ -471,21 +478,21 @@ h1, h2, h3, h4 {
 /* titolo grande (title_news_big)*/
 h1 {
 	color:#000066;
-	font-size: 20px;
+	font-size: 22px;
 	font-weight: bold;
 }
 
 /* titolo (title_news)*/
 h2 {
 	color:#000066;
-	font-size: 15px;
+	font-size: 17px;
 	font-weight: bold;
 }
 
 /* sottitoli (subtitle_news) */
 h3 {
 	color: #330066;
-	font-size: 13px;
+	font-size: 15px;
 	font-weight:normal;
 }
 
@@ -497,3 +504,60 @@ h4 {
 	font-weight:normal;
 	line-height:18px;
 }
+
+.box,
+.box-mini-left,
+.box-mini-right {
+-webkit-box-shadow: 2px 2px 7px rgba(50, 50, 50, 0.48);
+-moz-box-shadow:    2px 2px 7px rgba(50, 50, 50, 0.48);
+box-shadow:         2px 2px 7px rgba(50, 50, 50, 0.48);
+	border: 1px solid lightgrey;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	background-color: white;
+	overflow:hidden;
+	padding: 10;
+	margin-bottom: 1.5em;
+}
+
+
+.box-mini-left {
+	float: left;
+	width: 45%;
+	display: inline-block;
+}
+
+.box-mini-right {
+	float: right;
+	width: 45%;
+	display: inline-block;
+}
+
+#testo_home{
+	width:525px;
+	min-height: 396px;
+	height: auto !important;
+	height: 396px;
+	padding-left:220px;
+	padding-top:12px;
+	padding-right:12px;
+}
+
+#menu_sx_home{
+	position:absolute;
+	top: 12px;
+	left: 10px;
+	width: 193px;
+	height:330px;
+}
+
+#menu_sx_content_1_home{
+	width: 170px;
+	height:140px;
+}
+
+#menu_sx_content_2_home{
+	width: 170px;
+	height:120px;
+}
+

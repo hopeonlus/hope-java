@@ -6,12 +6,10 @@
         Auto-generated mapping file from
         the hibernate.org cfg2hbm engine
 -->
-    <class name="mapping.Adottanti" table="adottanti" schema="public">
+    <class name="mapping.Adottanti" table="adottanti">
         <id name="id" type="integer">
             <column name="id" />
-           	<generator class="sequence">
-	            <param name="sequence">adozioniid</param>
-	        </generator>
+           <generator class="native"/>
         </id>
         <many-to-one name="bambino" class="mapping.Bambino" fetch="select" lazy="false">
             <column name="idbambino" not-null="true" />

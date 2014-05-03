@@ -6,7 +6,7 @@
         Auto-generated mapping file from
         the hibernate.org cfg2hbm engine
 -->
-    <class name="mapping.Gruppibloccati" table="gruppibloccati" schema="public">
+    <class name="mapping.Gruppibloccati" table="gruppibloccati">
         <id name="id" type="integer">
             <column name="id" />
 			<generator class="assigned" />

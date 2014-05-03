@@ -6,7 +6,7 @@
         Auto-generated mapping file from
         the hibernate.org cfg2hbm engine
 -->
-    <class name="mapping.Anno" table="anno" schema="public">
+    <class name="mapping.Anno" table="anno">
         <id name="anno" type="integer">
             <column name="anno" />
             <generator class="assigned" />

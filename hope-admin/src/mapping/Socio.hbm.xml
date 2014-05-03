@@ -6,7 +6,7 @@
         Auto-generated mapping file from
         the hibernate.org cfg2hbm engine
 -->
-    <class name="mapping.Socio" table="socio" schema="public">
+    <class name="mapping.Socio" table="socio">
         <id name="tessera" type="integer">
             <column name="tessera" />
             <generator class="assigned" />

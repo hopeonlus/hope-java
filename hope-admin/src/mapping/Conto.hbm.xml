@@ -6,12 +6,10 @@
         Auto-generated mapping file from
         the hibernate.org cfg2hbm engine
 -->
-    <class name="mapping.Conto" table="conto" schema="public">
+    <class name="mapping.Conto" table="conto">
         <id name="id" type="integer">
             <column name="id" />
-            <generator class="sequence">
-	            <param name="sequence">contoid</param>
-	        </generator>
+           <generator class="native"/>
         </id>
         <many-to-one name="gruppo" class="mapping.Gruppo" fetch="select" lazy="false">
             <column name="gruppo" />

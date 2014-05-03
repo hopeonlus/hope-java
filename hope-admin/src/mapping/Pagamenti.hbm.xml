@@ -6,7 +6,7 @@
         Auto-generated mapping file from
         the hibernate.org cfg2hbm engine
 -->
-    <class name="mapping.Pagamenti" table="pagamenti" schema="public">
+    <class name="mapping.Pagamenti" table="pagamenti">
         <composite-id name="id" class="mapping.PagamentiId">
             <key-property name="idp" type="integer">
                 <column name="idp" />

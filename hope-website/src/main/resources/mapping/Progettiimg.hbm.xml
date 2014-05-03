@@ -6,7 +6,7 @@
         Auto-generated mapping file from
         the hibernate.org cfg2hbm engine
 -->
-    <class name="mapping.Progettiimg" table="progettiimg" schema="public">
+    <class name="mapping.Progettiimg" table="progettiimg">
         <composite-id name="id" class="mapping.ProgettiimgId">
             <key-property name="idprogetto" type="integer">
                 <column name="idprogetto" />
@@ -15,10 +15,10 @@
                 <column name="idimg" />
             </key-property>
         </composite-id>
-        <many-to-one name="immagini" class="mapping.Immagini" update="false" insert="false" fetch="select">
+        <many-to-one name="immagini" class="mapping.Immagini" update="false" insert="false" fetch="select" lazy="false">
             <column name="idimg" not-null="true" />
         </many-to-one>
-        <many-to-one name="progetti" class="mapping.Progetti" update="false" insert="false" fetch="select">
+        <many-to-one name="progetti" class="mapping.Progetti" update="false" insert="false" fetch="select" lazy="false">
             <column name="idprogetto" not-null="true" />
         </many-to-one>
     </class>

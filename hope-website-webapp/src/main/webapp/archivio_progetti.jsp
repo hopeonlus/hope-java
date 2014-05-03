@@ -345,42 +345,9 @@ function Alto(x){
 					<img src="img/meno.gif" border="0">
 					PROGETTi
 				</h2>
-				<%--
-				<TABLE width="440px" border="0" cellpadding="0" cellspacing="2">
-				<% for(int i = 0; i < dati.size(); i++)
-					{ 
-						String imgX = ((Immagini) img.get(i)).getImg();
-						progetto = (Progetti) dati.get(i);
-				%>
-						<TR>
-							<TD style="padding:5px; border-top:1px dashed #333333; border-bottom:1px dashed #333333;" width="25%">
-								<a href="progetti?action=SHOW&what=PROGETTO&id=<%= progetto.getId() %>">
-									<script language="javascript">
-										Alto("<%=imgX %>");
-									</script>
-								</a>
-							</TD>
-				<% if((progetto.getRealizzato()).intValue() == 1) {   %>
-							<TD style="padding:5px;background-repeat:no-repeat; background-position:center; border-top:1px dashed #333333; border-bottom:1px dashed #333333;" background="img/realizzato.gif">
-				<% } else {   %>
-							<TD style="padding:5px; border-top:1px dashed #333333; border-bottom:1px dashed #333333;">
-				<%  }  %>
-								<a href="progetti?action=SHOW&what=PROGETTO&id=<%= progetto.getId() %>">
-									<h2>
-										<%= progetto.getTitolo() %>
-									</h2>
-									<h3>
-										<%= progetto.getSottotitolo() %>
-									</h3>
-								</a>
-							</TD>
-						</TR>
-					<% } %>
-				</TABLE>
-				--%>
-				
+								
 				<table width="440px" border="0" cellpadding="0" cellspacing="0">
-				<% for(int i = 0; i < dati.size(); i++)
+				<% for(int i = dati.size()-1; i >= 0; i--)
 					{
 						progetto = (Progetti) dati.get(i);
 						String icona = null;

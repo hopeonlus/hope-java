@@ -6,12 +6,10 @@
         Auto-generated mapping file from
         the hibernate.org cfg2hbm engine
 -->
-    <class name="mapping.Bambino" table="bambino" schema="public">
+    <class name="mapping.Bambino" table="bambino">
         <id name="id" type="integer">
             <column name="id" />
-           	<generator class="sequence">
-	            <param name="sequence">bambinoid</param>
-	        </generator>
+           <generator class="native"/>
         </id>
         <property name="nome" type="string">
             <column name="nome" length="100" not-null="true" />

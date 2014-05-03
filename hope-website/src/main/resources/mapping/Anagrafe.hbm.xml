@@ -6,12 +6,10 @@
         Auto-generated mapping file from
         the hibernate.org cfg2hbm engine
 -->
-    <class name="mapping.Anagrafe" table="anagrafe" schema="public">
+    <class name="mapping.Anagrafe" table="anagrafe">
         <id name="id" type="integer">
             <column name="id" />
-            <generator class="sequence">
-	            <param name="sequence">anagrafeid</param>
-	        </generator>
+           <generator class="native"/>
         </id>
         <property name="nome" type="string">
             <column name="nome" length="40" not-null="true" />
@@ -41,10 +39,37 @@
             <column name="codfiscale" length="25" />
         </property>
         <property name="cognome" type="string">
-            <column name="cognome" length="50" />
+            <column name="cognome" length="50" not-null="true" />
         </property>
         <property name="posta" type="boolean">
             <column name="posta" />
         </property>
+        <property name="comunicazioni" type="boolean">
+            <column name="comunicazioni" />
+        </property>
+        <set name="socios" inverse="true" lazy="false">
+            <key>
+                <column name="id" not-null="true" />
+            </key>
+            <one-to-many class="mapping.Socio" />
+        </set>
+        <set name="adottantis" inverse="true" lazy="false">
+            <key>
+                <column name="idanagrafe" not-null="true" />
+            </key>
+            <one-to-many class="mapping.Adottanti" />
+        </set>
+        <set name="famigliasForId1" inverse="true" lazy="false">
+            <key>
+                <column name="id1" not-null="true" />
+            </key>
+            <one-to-many class="mapping.Famiglia" />
+        </set>
+        <set name="famigliasForId2" inverse="true" lazy="false">
+            <key>
+                <column name="id2" not-null="true" />
+            </key>
+            <one-to-many class="mapping.Famiglia" />
+        </set>
     </class>
 </hibernate-mapping>

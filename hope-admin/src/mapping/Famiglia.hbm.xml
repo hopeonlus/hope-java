@@ -6,7 +6,7 @@
         Auto-generated mapping file from
         the hibernate.org cfg2hbm engine
 -->
-    <class name="mapping.Famiglia" table="famiglia" schema="public">
+    <class name="mapping.Famiglia" table="famiglia">
         <composite-id name="id" class="mapping.FamigliaId">
             <key-property name="id2" type="integer">
                 <column name="id2" />

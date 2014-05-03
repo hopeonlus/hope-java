@@ -6,12 +6,10 @@
         Auto-generated mapping file from
         the hibernate.org cfg2hbm engine
 -->
-    <class name="mapping.Newsletter" table="newsletter" schema="public">
+    <class name="mapping.Newsletter" table="newsletter">
         <id name="id" type="integer">
             <column name="id" />
-            <generator class="sequence">
-	            <param name="sequence">newsletterid</param>
-	        </generator>
+           <generator class="native"/>
         </id>
         <property name="email" type="string">
             <column name="email" length="80" not-null="true" />
