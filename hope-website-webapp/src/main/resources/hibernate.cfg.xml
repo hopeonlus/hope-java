@@ -6,7 +6,8 @@
 	<session-factory>
 
 		<!-- DB CONNECTION PROPERTIES -->
-		<property name="hibernate.connection.url">jdbc:mysql://hopeonlus.it.escalade.mochahost.com:3306/hope2011_db</property>
+		<!-- for local tests: hopeonlus.it.escalade.mochahost.com -->
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hope2011_db</property>
 		<property name="hibernate.connection.username">hope2011_website</property>
 		<property name="hibernate.connection.password">fordfocus</property>
 		<property name="hibernate.cglib.use_reflection_optimizer">true</property>
