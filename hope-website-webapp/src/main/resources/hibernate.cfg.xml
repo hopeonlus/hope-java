@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+
+		<!-- DB CONNECTION PROPERTIES -->
+		<property name="hibernate.connection.url">jdbc:mysql://hopeonlus.it.escalade.mochahost.com:3306/hope2011_db</property>
+		<property name="hibernate.connection.username">hope2011_website</property>
+		<property name="hibernate.connection.password">fordfocus</property>
+		<property name="hibernate.cglib.use_reflection_optimizer">true</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<!-- C3P0 PROPERTIES -->
+		<property name="hibernate.c3p0.acquire_increment">2</property>
+		<property name="hibernate.c3p0.idle_test_period">100</property>
+		<property name="hibernate.c3p0.max_size">8</property>
+		<property name="hibernate.c3p0.max_statements">100</property>
+		<property name="hibernate.c3p0.min_size">2</property>
+		<property name="hibernate.c3p0.timeout">100</property>
+
+
+		<!-- MAPPING -->
+		<mapping resource="mapping/Regioni.hbm.xml" />
+		<mapping resource="mapping/Newsimg.hbm.xml" />
+		<mapping resource="mapping/Tipofile.hbm.xml" />
+		<mapping resource="mapping/Progettiimg.hbm.xml" />
+		<mapping resource="mapping/Newsletter.hbm.xml" />
+		<mapping resource="mapping/High.hbm.xml" />
+		<mapping resource="mapping/Categorienews.hbm.xml" />
+		<mapping resource="mapping/Immagini.hbm.xml" />
+		<mapping resource="mapping/News.hbm.xml" />
+		<mapping resource="mapping/Download.hbm.xml" />
+		<mapping resource="mapping/Eventi.hbm.xml" />
+		<mapping resource="mapping/Progetti.hbm.xml" />
+		<mapping resource="mapping/Users.hbm.xml" />
+
+
+	</session-factory>
+</hibernate-configuration>
