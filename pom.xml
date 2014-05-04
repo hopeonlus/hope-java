@@ -42,6 +42,30 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>wagon-maven-plugin</artifactId>
+				<version>1.0-beta-5</version>
+				<configuration>
+					<fromFile>hope-website-webapp/target/hope-website-webapp-${project.version}.war</fromFile>
+					<url>ftp://204.93.157.98/wars</url>
+					<serverId>mochahost-ftp-server</serverId>
+				</configuration>
+				<!-- <executions> <execution> <id>deploy-war</id> <phase>upload-single</phase> 
+					<goals> <goal>upload-single</goal> </goals> <configuration> <fromFile>${project.build.directory}/${project.build.finalName}.war</fromFile> 
+					<toFile>ROOT.war</toFile> <url>ftp://204.93.157.98/</url> <serverId>mochahost-ftp-server</serverId> 
+					</configuration> </execution> </executions> -->
+				<!-- TODO: copy css and img see: http://www.petrikainulainen.net/programming/tips-and-tricks/deploying-static-and-dynamic-content-with-maven-wagon-plugin/ -->
+			</plugin>
 		</plugins>
+		<extensions>
+			<!-- Enabling the use of FTP -->
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
+				<version>1.0-beta-5</version>
+			</extension>
+		</extensions>
 	</build>
 </project>
