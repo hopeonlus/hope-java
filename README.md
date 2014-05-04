@@ -13,11 +13,10 @@ Configure server in ~/.m2/settings.xml
 
 then run:
 ```
-mvn clean install
-mvn upload-single
+mvn clean package wagon:upload-single
 ```
 
-this will copy the latest version into 'wars' folder.
+this will upload the latest version to ftp://204.93.157.98/wars/hope-website-webapp-VERSION.war.
  
 N.B. if the version doesn't change it will overrride the previous file
 
