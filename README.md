@@ -16,7 +16,7 @@ then run:
 mvn clean package wagon:upload-single
 ```
 
-this will upload the latest version to ftp://204.93.157.98/wars/hope-website-webapp-<VERSION>.war.
+this will upload the latest version to ftp://204.93.157.98/wars/hope-website-webapp-VERSION.war.
  
 N.B. if the version doesn't change it will overrride the previous file
 
