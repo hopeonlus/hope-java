@@ -13,7 +13,7 @@ Configure server in ~/.m2/settings.xml
 
 then run:
 ```
-mvn clean install\
+mvn clean install
 mvn upload-single
 ```
 
