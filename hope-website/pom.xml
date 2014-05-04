@@ -12,11 +12,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>3.6.8.Final</version>
-		</dependency>
-		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>1.1.3</version>
@@ -35,6 +30,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>3.6.8.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-c3p0</artifactId>
 			<version>3.6.8.Final</version>
 		</dependency>
@@ -43,5 +43,11 @@
 			<artifactId>hibernate-ehcache</artifactId>
 			<version>3.6.8.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt-hibernate3</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+
 	</dependencies>
 </project>

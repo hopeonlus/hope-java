@@ -5,11 +5,21 @@
 <hibernate-configuration>
 	<session-factory>
 
+		<property name="connection.provider_class">org.jasypt.hibernate3.connectionprovider.EncryptedPasswordC3P0ConnectionProvider</property>
+		<property name="connection.encryptor_registered_name">configurationHibernateEncryptor</property>
+
 		<!-- DB CONNECTION PROPERTIES -->
-		<!-- for local tests: hopeonlus.it.escalade.mochahost.com -->
+		<!-- for local tests:
+				- URL: hopeonlus.it.escalade.mochahost.com
+				- enable IP in mysql control panel 
+				- put password in jetty-dev.xml
+				
+			for production:
+				- put password in $TOMCAT_HOME/conf/Catalina/hopeonlus.it/ROOT.xml
+		-->
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hope2011_db</property>
-		<property name="hibernate.connection.username">hope2011_website</property>
-		<property name="hibernate.connection.password">fordfocus</property>
+		<property name="hibernate.connection.username">hope2011_rw</property>
+		<property name="hibernate.connection.password">ENC(hSA7gTD7mTVREsra0zETtQ==)</property>
 		<property name="hibernate.cglib.use_reflection_optimizer">true</property>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>

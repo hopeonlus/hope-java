@@ -31,6 +31,9 @@
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>8.1.15.v20140411</version>
+				<configuration>
+					<contextXml>jetty-dev.xml</contextXml>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

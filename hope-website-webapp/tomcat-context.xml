@@ -1,0 +1,5 @@
+<!-- only an example fo the tomcat config to put in $TOMCAT_HOME/conf/Catalina/hopeonlus.it/ROOT.xml -->
+<Context>
+	<Environment name="hope/dbpassword" value="passowordhere"
+		type="java.lang.String" override="false" />
+</Context>

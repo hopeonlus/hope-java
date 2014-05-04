@@ -1,25 +1,34 @@
 package system;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import org.jasypt.hibernate3.encryptor.HibernatePBEEncryptorRegistry;
 
-/**
- * TODO: A lot of comments here...
- */
 public class HibernateUtil {
 
-	private static Log log = LogFactory.getLog(HibernateUtil.class);
 	private static SessionFactory sessionFactory;
-	public static final ThreadLocal session = new ThreadLocal();
+	public static final ThreadLocal<Session> session = new ThreadLocal<Session>();
 
 	static {
 		try {
+			
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			String pwd = (String) envCtx.lookup("hope/dbpassword");
+			
+			StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+			encryptor.setPassword(pwd);
+			
+			HibernatePBEEncryptorRegistry registry = HibernatePBEEncryptorRegistry.getInstance();
+			registry.registerPBEStringEncryptor("configurationHibernateEncryptor", encryptor);
+
 			Configuration Conf = new Configuration();
-			log.info("ho creato la conf");
 			sessionFactory = Conf.configure().buildSessionFactory();
 		} catch (Throwable t) {
 			t.printStackTrace();
