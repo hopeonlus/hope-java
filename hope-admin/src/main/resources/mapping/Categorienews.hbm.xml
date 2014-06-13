@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+    <class name="mapping.Categorienews" table="categorienews">
+        <id name="id" type="integer">
+            <column name="id" />
+           <generator class="native"/>
+        </id>
+        <property name="nome" type="string">
+            <column name="nome" length="50" />
+        </property>
+        <property name="descrizione" type="string">
+            <column name="descrizione" />
+        </property>
+        <set name="newses" inverse="true" lazy="false">
+            <key>
+                <column name="tipo" not-null="true" />
+            </key>
+            <one-to-many class="mapping.News" />
+        </set>
+    </class>
+</hibernate-mapping>

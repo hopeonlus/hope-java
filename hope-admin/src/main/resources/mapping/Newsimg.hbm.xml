@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+    <class name="mapping.Newsimg" table="newsimg">
+        <composite-id name="id" class="mapping.NewsimgId">
+            <key-property name="idnews" type="integer">
+                <column name="idnews" />
+            </key-property>
+            <key-property name="idimg" type="integer">
+                <column name="idimg" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="immagini" class="mapping.Immagini" update="false" insert="false" fetch="select" lazy="false">
+            <column name="idimg" not-null="true" />
+        </many-to-one>
+        <many-to-one name="news" class="mapping.News" update="false" insert="false" fetch="select" lazy="false">
+            <column name="idnews" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+    <class name="mapping.Immagini" table="immagini">
+        <id name="id" type="integer">
+            <column name="id" />
+           <generator class="native"/>
+        </id>
+        <property name="nome" type="string">
+            <column name="nome" length="40" not-null="true" />
+        </property>
+        <property name="img" type="string">
+            <column name="img" length="80" not-null="true" />
+        </property>
+        <property name="imggrande" type="string">
+            <column name="imggrande" length="80" />
+        </property>
+        <property name="tipo" type="integer">
+            <column name="tipo" />
+        </property>
+        <set name="progettiimgs" inverse="true" lazy="false">
+            <key>
+                <column name="idimg" not-null="true" />
+            </key>
+            <one-to-many class="mapping.Progettiimg" />
+        </set>
+        <set name="progettis" inverse="true" lazy="false">
+            <key>
+                <column name="idimgluogo" not-null="true" />
+            </key>
+            <one-to-many class="mapping.Progetti" />
+        </set>
+        <set name="newsimgs" inverse="true" lazy="false">
+            <key>
+                <column name="idimg" not-null="true" />
+            </key>
+            <one-to-many class="mapping.Newsimg" />
+        </set>
+    </class>
+</hibernate-mapping>

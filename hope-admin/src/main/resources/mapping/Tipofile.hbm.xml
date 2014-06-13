@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+    <class name="mapping.Tipofile" table="tipofile">
+        <id name="id" type="integer">
+            <column name="id" />
+           <generator class="native"/>
+        </id>
+        <property name="tipo" type="string">
+            <column name="tipo" length="80" not-null="true" />
+        </property>
+        <property name="estensione" type="string">
+            <column name="estensione" length="30" not-null="true" />
+        </property>
+        <property name="icona" type="string">
+            <column name="icona" length="100" />
+        </property>
+        <set name="downloads" inverse="true" lazy="false">
+            <key>
+                <column name="idtipofile" not-null="true" />
+            </key>
+            <one-to-many class="mapping.Download" />
+        </set>
+    </class>
+</hibernate-mapping>

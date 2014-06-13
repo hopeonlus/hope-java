@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+    <class name="mapping.Progetti" table="progetti">
+        <id name="id" type="integer">
+            <column name="id" />
+           <generator class="native"/>
+        </id>
+        <many-to-one name="regioni" class="mapping.Regioni" fetch="select" lazy="false">
+            <column name="idregione" not-null="true" />
+        </many-to-one>
+        <many-to-one name="immagini" class="mapping.Immagini" fetch="select" lazy="false">
+            <column name="idimgluogo" not-null="true" />
+        </many-to-one>
+        <property name="titolo" type="string">
+            <column name="titolo" length="150" not-null="true" />
+        </property>
+        <property name="sottotitolo" type="string">
+            <column name="sottotitolo" length="200" not-null="true" />
+        </property>
+        <property name="testo" type="string">
+            <column name="testo" not-null="true" />
+        </property>
+        <property name="inizio" type="string">
+            <column name="inizio" length="30" not-null="true" />
+        </property>
+        <property name="fine" type="string">
+            <column name="fine" length="30" not-null="true" />
+        </property>
+        <property name="luogo" type="string">
+            <column name="luogo" length="40" not-null="true" />
+        </property>
+        <property name="home" type="string">
+            <column name="home" length="10" not-null="false" />
+        </property>
+        <property name="realizzato" type="integer">
+            <column name="realizzato" not-null="true" />
+        </property>
+        <set name="progettiimgs" inverse="true" lazy="false">
+            <key>
+                <column name="idprogetto" not-null="true" />
+            </key>
+            <one-to-many class="mapping.Progettiimg" />
+        </set>
+    </class>
+</hibernate-mapping>

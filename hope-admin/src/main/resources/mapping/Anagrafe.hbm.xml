@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+    <class name="mapping.Anagrafe" table="anagrafe" schema="public">
+        <id name="id" type="integer">
+            <column name="id" />
+           <generator class="native"/>
+        </id>
+        <property name="nome" type="string">
+            <column name="nome" length="40" not-null="true" />
+        </property>
+        <property name="indirizzo" type="string">
+            <column name="indirizzo" length="60" not-null="true" />
+        </property>
+        <property name="cap" type="string">
+            <column name="cap" length="10" not-null="true" />
+        </property>
+        <property name="citta" type="string">
+            <column name="citta" length="60" not-null="true" />
+        </property>
+        <property name="nazione" type="string">
+            <column name="nazione" length="30" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="25" />
+        </property>
+        <property name="cellulare" type="string">
+            <column name="cellulare" length="25" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="30" />
+        </property>
+        <property name="codfiscale" type="string">
+            <column name="codfiscale" length="25" />
+        </property>
+        <property name="cognome" type="string">
+            <column name="cognome" length="50" not-null="true" />
+        </property>
+        <property name="posta" type="boolean">
+            <column name="posta" />
+        </property>
+        <property name="comunicazioni" type="boolean">
+            <column name="comunicazioni" />
+        </property>
+        <set name="socios" inverse="true" lazy="false">
+            <key>
+                <column name="id" not-null="true" />
+            </key>
+            <one-to-many class="mapping.Socio" />
+        </set>
+        <set name="adottantis" inverse="true" lazy="false">
+            <key>
+                <column name="idanagrafe" not-null="true" />
+            </key>
+            <one-to-many class="mapping.Adottanti" />
+        </set>
+        <set name="famigliasForId1" inverse="true" lazy="false">
+            <key>
+                <column name="id1" not-null="true" />
+            </key>
+            <one-to-many class="mapping.Famiglia" />
+        </set>
+        <set name="famigliasForId2" inverse="true" lazy="false">
+            <key>
+                <column name="id2" not-null="true" />
+            </key>
+            <one-to-many class="mapping.Famiglia" />
+        </set>
+    </class>
+</hibernate-mapping>

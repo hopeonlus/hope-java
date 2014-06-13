@@ -9,6 +9,8 @@
 	<packaging>pom</packaging>
 
 	<modules>
+		<module>hope-admin</module>
+		<module>hope-admin-webapp</module>
 		<module>hope-website</module>
 		<module>hope-website-webapp</module>
 	</modules>

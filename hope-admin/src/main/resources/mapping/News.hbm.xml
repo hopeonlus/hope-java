@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+    <class name="mapping.News" table="news">
+        <id name="id" type="integer">
+            <column name="id" />
+           <generator class="native"/>
+        </id>
+        <many-to-one name="categorienews" class="mapping.Categorienews" fetch="select" lazy="false">
+            <column name="tipo" not-null="true" />
+        </many-to-one>
+        <property name="titolo" type="string">
+            <column name="titolo" length="200" not-null="true" />
+        </property>
+        <property name="sottotitolo" type="string">
+            <column name="sottotitolo" />
+        </property>
+        <property name="testo" type="string">
+            <column name="testo" not-null="true" />
+        </property>
+        <property name="data" type="date">
+            <column name="data" length="4" not-null="true" />
+        </property>
+        <property name="home" type="string">
+            <column name="home" length="10" not-null="true" />
+        </property>
+        <set name="downloads" inverse="true" lazy="false">
+            <key>
+                <column name="idnews" not-null="true" />
+            </key>
+            <one-to-many class="mapping.Download" />
+        </set>
+        <set name="eventis" inverse="true" lazy="false">
+            <key>
+                <column name="idnews" not-null="true" />
+            </key>
+            <one-to-many class="mapping.Eventi" />
+        </set>
+        <set name="newsimgs" inverse="true" lazy="false">
+            <key>
+                <column name="idnews" not-null="true" />
+            </key>
+            <one-to-many class="mapping.Newsimg" />
+        </set>
+        <set name="highs" inverse="true" lazy="false">
+            <key>
+                <column name="idnews" not-null="true" />
+            </key>
+            <one-to-many class="mapping.High" />
+        </set>
+    </class>
+</hibernate-mapping>

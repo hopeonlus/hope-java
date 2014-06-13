@@ -1,0 +1,7 @@
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+
+	<New class="org.eclipse.jetty.plus.jndi.EnvEntry">
+		<Arg>hope/dbpassword</Arg>
+		<Arg type="java.lang.String"></Arg>
+	</New>
+</Configure>
