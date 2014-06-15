@@ -56,10 +56,11 @@ public class ProgettiCtrl extends HttpServlet{
 		String action = request.getParameter("action");
 		String what = request.getParameter("what");
 		
-		if(action == null)
-		{
+		if(action == null) {
 			generaRegioni(request, response);
 			action = "";
+		} else if(what == null) {
+			return;
 		}
 
 		
@@ -180,42 +181,44 @@ public class ProgettiCtrl extends HttpServlet{
 	private void generaZona(HttpServletRequest request, HttpServletResponse response) {
 		
 		String id_regione = request.getParameter("id");
-		Query q = hsession.createQuery("FROM Regioni WHERE id = :id");
-		q.setString("id", id_regione);
-		String nome_regione = ((Regioni) q.list().get(0)).getRegione();
-		q = hsession.createQuery("FROM Progetti WHERE idregione = :id");
-		q.setString("id", id_regione);
-		List data = q.list();
-		List imgs = new ArrayList();
-		
-		for(int i = 0; i < data.size(); i++)
-		{
-			String id = ((Progetti) data.get(i)).getId().toString();
-			q = hsession.createQuery("FROM Progettiimg WHERE idprogetto = :id");
-			q.setString("id", id);
+		if(id_regione != null) {
+			Query q = hsession.createQuery("FROM Regioni WHERE id = :id");
+			q.setString("id", id_regione);
+			String nome_regione = ((Regioni) q.list().get(0)).getRegione();
+			q = hsession.createQuery("FROM Progetti WHERE idregione = :id");
+			q.setString("id", id_regione);
+			List data = q.list();
+			List imgs = new ArrayList();
 			
-			List tmp = q.list();
-			String id_img = "";
-			
-			if(tmp.size() == 0)
-				id_img = "0";
-			else
-				id_img = ((Progettiimg) tmp.get(0)).getId().getIdimg().toString();
-			
-			q = hsession.createQuery("FROM Immagini WHERE id = :id");
-			q.setString("id", id_img);
-			List x = q.list();
-			if(x.size() > 0)
+			for(int i = 0; i < data.size(); i++)
 			{
-				Object img = x.get(0);
-				imgs.add(img);
+				String id = ((Progetti) data.get(i)).getId().toString();
+				q = hsession.createQuery("FROM Progettiimg WHERE idprogetto = :id");
+				q.setString("id", id);
+				
+				List tmp = q.list();
+				String id_img = "";
+				
+				if(tmp.size() == 0)
+					id_img = "0";
+				else
+					id_img = ((Progettiimg) tmp.get(0)).getId().getIdimg().toString();
+				
+				q = hsession.createQuery("FROM Immagini WHERE id = :id");
+				q.setString("id", id_img);
+				List x = q.list();
+				if(x.size() > 0)
+				{
+					Object img = x.get(0);
+					imgs.add(img);
+				}
 			}
+			
+			request.setAttribute("dati", data);
+			request.setAttribute("img", imgs);
+			request.setAttribute("nome_regione", nome_regione);
+			request.setAttribute("id_regione", id_regione);
 		}
-		
-		request.setAttribute("dati", data);
-		request.setAttribute("img", imgs);
-		request.setAttribute("nome_regione", nome_regione);
-		request.setAttribute("id_regione", id_regione);
 		
 		nextview = "/archivio_progetti.jsp";
 	}
@@ -256,33 +259,35 @@ public class ProgettiCtrl extends HttpServlet{
 	private void generaProgetto(HttpServletRequest request, HttpServletResponse response) {
 		
 		String id = request.getParameter("id");
-		Query q = hsession.createQuery("FROM Progetti WHERE id = :id");
-		q.setString("id", id);
-		List data = q.list();
-		
-		String id_regione = ((Progetti) data.get(0)).getRegioni().getId().toString();
-		q = hsession.createQuery("FROM Regioni WHERE id = :id");
-		q.setString("id", id_regione);
-		
-		request.setAttribute("regione", ((Regioni)q.list().get(0)).getRegione());
-		
-		if(data != null)
-		{			
+		if(id != null) {
+			Query q = hsession.createQuery("FROM Progetti WHERE id = :id");
+			q.setString("id", id);
+			List data = q.list();
 			
-			String id_luogo = ((Progetti) data.get(0)).getImmagini().getId().toString();
-			q = hsession.createQuery("FROM Immagini WHERE id = :id");
-			q.setString("id", id_luogo);
+			String id_regione = ((Progetti) data.get(0)).getRegioni().getId().toString();
+			q = hsession.createQuery("FROM Regioni WHERE id = :id");
+			q.setString("id", id_regione);
 			
-			List tmp = q.list();
+			request.setAttribute("regione", ((Regioni)q.list().get(0)).getRegione());
 			
-			if(tmp != null)
-			{
-				request.setAttribute("img_luogo", (Immagini) tmp.get(0));
+			if(data != null)
+			{			
+				
+				String id_luogo = ((Progetti) data.get(0)).getImmagini().getId().toString();
+				q = hsession.createQuery("FROM Immagini WHERE id = :id");
+				q.setString("id", id_luogo);
+				
+				List tmp = q.list();
+				
+				if(tmp != null)
+				{
+					request.setAttribute("img_luogo", (Immagini) tmp.get(0));
+				}
+				request.setAttribute("dati", data.get(0));
 			}
-			request.setAttribute("dati", data.get(0));
+			
+			generaImg(request, response);
 		}
-		
-		generaImg(request, response);
 		
 		nextview = "/progetto.jsp";
 	}
@@ -292,51 +297,52 @@ public class ProgettiCtrl extends HttpServlet{
 		String id = request.getParameter("id");
 		String n_img = request.getParameter("n_img");
 		
-		Query q = hsession.createQuery("FROM Progettiimg WHERE idprogetto = :id");
-		q.setString("id", id);
-		List param = q.list();
-		List id_img = new ArrayList();
-		
-		for(int i = 0; i < param.size(); i++)
-		{
-			id_img.add(((Progettiimg)param.get(i)).getId().getIdimg().toString());
-		}
-		int totImg = param.size();
-		
-		if(id_img.size() > 0)
-		{
-			q = hsession.createQuery("FROM Immagini WHERE Id in (:lista)");
-			q.setParameterList("lista", id_img);
+		if(id != null && n_img != null) {
+			Query q = hsession.createQuery("FROM Progettiimg WHERE idprogetto = :id");
+			q.setString("id", id);
+			List param = q.list();
+			List id_img = new ArrayList();
 			
-			List ListaImg = new ArrayList();
-			
-			if (n_img == null)
-			{	
-				ListaImg = q.list();
-			}
-			else
+			for(int i = 0; i < param.size(); i++)
 			{
-				int corrente = Integer.parseInt(n_img);
-				q.setFirstResult((corrente - 1));
-				q.setMaxResults(1);
-				ListaImg = q.list();
+				id_img.add(((Progettiimg)param.get(i)).getId().getIdimg().toString());
+			}
+			int totImg = param.size();
+			
+			if(id_img.size() > 0)
+			{
+				q = hsession.createQuery("FROM Immagini WHERE Id in (:lista)");
+				q.setParameterList("lista", id_img);
 				
-				if(ListaImg != null){
-					if(corrente > 1){
-						String prev = Integer.toString(corrente - 1);
-						request.setAttribute("prev", prev);
-					}
-					if(corrente < totImg){
-						String next = Integer.toString(corrente + 1);
-						request.setAttribute("next", next);
+				List ListaImg = new ArrayList();
+				
+				if (n_img == null)
+				{	
+					ListaImg = q.list();
+				}
+				else
+				{
+					int corrente = Integer.parseInt(n_img);
+					q.setFirstResult((corrente - 1));
+					q.setMaxResults(1);
+					ListaImg = q.list();
+					
+					if(ListaImg != null){
+						if(corrente > 1){
+							String prev = Integer.toString(corrente - 1);
+							request.setAttribute("prev", prev);
+						}
+						if(corrente < totImg){
+							String next = Integer.toString(corrente + 1);
+							request.setAttribute("next", next);
+						}
 					}
 				}
+				
+				request.setAttribute("totImg", Integer.toString(totImg));
+				request.setAttribute("ListaImg", ListaImg);
 			}
-			
-			request.setAttribute("totImg", Integer.toString(totImg));
-			request.setAttribute("ListaImg", ListaImg);
 		}
-
 	}
 	
 	private void setHighAndEventi(HttpServletRequest request, HttpServletResponse response) {
@@ -365,6 +371,9 @@ public class ProgettiCtrl extends HttpServlet{
 		String anno = request.getParameter("anno");
 		
 		int anno_int = 0;
+		
+		if(anno == null)
+			anno = new Integer(new GregorianCalendar().get(Calendar.YEAR)).toString();
 		
 		if(mese == null)
 			mese = new Integer(new GregorianCalendar().get(Calendar.MONTH) + 1).toString();
@@ -405,7 +414,6 @@ public class ProgettiCtrl extends HttpServlet{
 		tmp = q.list();
 		
 		request.setAttribute("eventi", tmp);
-		
 	}
 	
 }

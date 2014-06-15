@@ -96,51 +96,52 @@ public class NewsCtrl extends HttpServlet{
 		String id = request.getParameter("id");
 		String n_img = request.getParameter("n_img");
 		
-		Query q = hsession.createQuery("FROM Newsimg WHERE idnews = :id");
-		q.setString("id", id);
-		List param = q.list();
-		List id_img = new ArrayList();
-		
-		for(int i = 0; i < param.size(); i++)
-		{
-			id_img.add(((Newsimg)param.get(i)).getId().getIdimg().toString());
-		}
-		int totImg = param.size();
-		
-		if(id_img.size() > 0)
-		{
-			q = hsession.createQuery("FROM Immagini WHERE Id in (:lista)");
-			q.setParameterList("lista", id_img);
+		if(id != null && n_img != null) {
+			Query q = hsession.createQuery("FROM Newsimg WHERE idnews = :id");
+			q.setString("id", id);
+			List param = q.list();
+			List id_img = new ArrayList();
 			
-			List ListaImg = new ArrayList();
-			
-			if (n_img == null)
-			{	
-				ListaImg = q.list();
-			}
-			else
+			for(int i = 0; i < param.size(); i++)
 			{
-				int corrente = Integer.parseInt(n_img);
-				q.setFirstResult((corrente - 1));
-				q.setMaxResults(1);
-				ListaImg = q.list();
+				id_img.add(((Newsimg)param.get(i)).getId().getIdimg().toString());
+			}
+			int totImg = param.size();
+			
+			if(id_img.size() > 0)
+			{
+				q = hsession.createQuery("FROM Immagini WHERE Id in (:lista)");
+				q.setParameterList("lista", id_img);
 				
-				if(ListaImg != null){
-					if(corrente > 1){
-						String prev = Integer.toString(corrente - 1);
-						request.setAttribute("prev", prev);
-					}
-					if(corrente < totImg){
-						String next = Integer.toString(corrente + 1);
-						request.setAttribute("next", next);
+				List ListaImg = new ArrayList();
+				
+				if (n_img == null)
+				{	
+					ListaImg = q.list();
+				}
+				else
+				{
+					int corrente = Integer.parseInt(n_img);
+					q.setFirstResult((corrente - 1));
+					q.setMaxResults(1);
+					ListaImg = q.list();
+					
+					if(ListaImg != null){
+						if(corrente > 1){
+							String prev = Integer.toString(corrente - 1);
+							request.setAttribute("prev", prev);
+						}
+						if(corrente < totImg){
+							String next = Integer.toString(corrente + 1);
+							request.setAttribute("next", next);
+						}
 					}
 				}
+				
+				request.setAttribute("totImg", Integer.toString(totImg));
+				request.setAttribute("ListaImg", ListaImg);
 			}
-			
-			request.setAttribute("totImg", Integer.toString(totImg));
-			request.setAttribute("ListaImg", ListaImg);
 		}
-
 	}
 
 	private void generaTutte(HttpServletRequest request, HttpServletResponse response) {
@@ -212,43 +213,45 @@ public class NewsCtrl extends HttpServlet{
 	private void generaNews(HttpServletRequest request, HttpServletResponse response) {
 		
 		String id = request.getParameter("id");
-		Query q = hsession.createQuery("FROM News WHERE id = :id");
-		q.setString("id", id);
-		List data = q.list();
-		
-		if(data != null)
-		{			
-			
-			q = hsession.createQuery("FROM Newsimg WHERE idnews = :id");
+		if(id != null) {
+			Query q = hsession.createQuery("FROM News WHERE id = :id");
 			q.setString("id", id);
-			List img = q.list();
-			List imgs = new ArrayList();
+			List data = q.list();
 			
-			if(img.size() == 0)
-			{
-				q = hsession.createQuery("FROM Immagini WHERE id = :id");
-				q.setString("id", "0");
-				imgs = q.list();
-			}
-			else
-			{
-				for(int i = 0; i < img.size(); i++)
+			if(data != null)
+			{			
+				
+				q = hsession.createQuery("FROM Newsimg WHERE idnews = :id");
+				q.setString("id", id);
+				List img = q.list();
+				List imgs = new ArrayList();
+				
+				if(img.size() == 0)
 				{
-					String tmp = ((Newsimg) img.get(i)).getId().getIdimg().toString();
 					q = hsession.createQuery("FROM Immagini WHERE id = :id");
-					q.setString("id", tmp);
-					List tmp2 = q.list();
-					imgs.add(tmp2.get(0));
+					q.setString("id", "0");
+					imgs = q.list();
 				}
+				else
+				{
+					for(int i = 0; i < img.size(); i++)
+					{
+						String tmp = ((Newsimg) img.get(i)).getId().getIdimg().toString();
+						q = hsession.createQuery("FROM Immagini WHERE id = :id");
+						q.setString("id", tmp);
+						List tmp2 = q.list();
+						imgs.add(tmp2.get(0));
+					}
+				}
+				
+				request.setAttribute("img", imgs);
+				request.setAttribute("dati", data.get(0));
 			}
 			
-			request.setAttribute("img", imgs);
-			request.setAttribute("dati", data.get(0));
+			generaImg(request, response);
+			
+			nextview = "/news.jsp";
 		}
-		
-		generaImg(request, response);
-		
-		nextview = "/news.jsp";
 	}
 	
 	private void setHighAndEventi(HttpServletRequest request, HttpServletResponse response) {

@@ -3,17 +3,39 @@ package controller.soci;
 import java.awt.Color;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import mapping.*;
+import mapping.Anagrafe;
+import mapping.Famiglia;
+import mapping.Pagamenti;
+import mapping.PagamentiId;
+import mapping.Pagamentosoci;
+import mapping.Socio;
+import mapping.Users;
 
-import org.hibernate.*;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import system.Avviso;
+import system.HibernateUtil;
+import util.cms.CMSUtil;
+import util.word.WordDocumentProcessor;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
@@ -30,7 +52,6 @@ import com.lowagie.text.pdf.PdfWriter;
 
 import eccezioni.LoginException;
 import eccezioni.PagamentoException;
-import system.*;
 
 public class SociCtrl extends HttpServlet {
 
@@ -43,41 +64,12 @@ public class SociCtrl extends HttpServlet {
 	private String nextview = "";
 	private List printed = new ArrayList();
 
-	/**
-	 * The doGet method of the servlet.
-	 * 
-	 * This method is called when a form has its tag value method equals to get.
-	 * 
-	 * @param request
-	 *            the request send by the client to the server
-	 * @param response
-	 *            the response send by the server to the client
-	 * @throws ServletException
-	 *             if an error occurred
-	 * @throws IOException
-	 *             if an error occurred
-	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 		controller(request, response);
 
 	}
 
-	/**
-	 * The doPost method of the servlet. <br>
-	 * 
-	 * This method is called when a form has its tag value method equals to
-	 * post.
-	 * 
-	 * @param request
-	 *            the request send by the client to the server
-	 * @param response
-	 *            the response send by the server to the client
-	 * @throws ServletException
-	 *             if an error occurred
-	 * @throws IOException
-	 *             if an error occurred
-	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 		controller(request, response);
@@ -132,6 +124,8 @@ public class SociCtrl extends HttpServlet {
 			} else if (action.equals("stampa")) {
 
 				stampaSoci(request, response);
+			} else if (action.equals("printletter")) {
+				printThankYouLetter(request, response);
 			}
 
 			tx.commit();
@@ -663,11 +657,7 @@ public class SociCtrl extends HttpServlet {
 				table.addCell(cell);
 			}
 
-			if (resto == 2) {
-
-			}
-
-			if (cells % 24 != 0)
+			if ((resto != 2) || (cells % 24 != 0))
 				document.add(table);
 
 		} catch (DocumentException de) {
@@ -1200,6 +1190,40 @@ public class SociCtrl extends HttpServlet {
 		}
 
 		return soci;
+	}
+
+	private void printThankYouLetter(HttpServletRequest request, HttpServletResponse response) throws NullPointerException,
+			IllegalArgumentException, IOException {
+		InputStream doc_inputstream = null;
+		try {
+			String pagamento_id = request.getParameter("idp");
+			System.out.println("pagamento_id: " + pagamento_id);
+
+			Query q = this.hsession.createQuery("FROM Pagamenti WHERE idp = :id");
+			q.setString("id", pagamento_id);
+
+			Pagamenti p = (Pagamenti) q.list().get(0);
+			PagamentiId person = p.getId();
+
+			HashMap<String, String> params = new HashMap<String, String>();
+			params.put("$LAST_NAME$", person.getCognome());
+			params.put("$FIRST_NAME$", person.getNome());
+			params.put("$ADDRESS_LINE_1$", person.getIndirizzo());
+			params.put("$ADDRESS_LINE_2$", person.getCap() + " " + person.getCitta());
+			params.put("$ADDRESS_LINE_3$", person.getNazione() != null ? person.getNazione() : "");
+			params.put("$DATE$", new SimpleDateFormat("dd MMMMM yyyy", Locale.ITALIAN).format(new Date()));
+
+			doc_inputstream = CMSUtil.getInstance().getWelcomeLetterTemplate(person.getAnno().intValue());
+			System.out.println("doc_inputstream: " + doc_inputstream);
+
+			String filename = "lettera_" + person.getCognome() + "_" + person.getNome() + "_" + person.getAnno() + ".doc";
+			response.setContentType("application/msword");
+			response.setHeader("Content-disposition", "attachment; filename=" + filename);
+			new WordDocumentProcessor(doc_inputstream, response.getOutputStream(), params).processFile();
+		} finally {
+			if (doc_inputstream != null)
+				doc_inputstream.close();
+		}
 	}
 
 	private class MyPageEvent extends PdfPageEventHelper {

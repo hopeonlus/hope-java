@@ -188,40 +188,42 @@ public class MainCtrl extends HttpServlet{
 		
 		String email = (String) request.getParameter("email");
 		
-		Query q = hsession.createQuery("FROM Newsletter WHERE email = :email");
-		q.setString("email", email);
-		
-		if(q.list().size() == 0)
-		{	
-			Transaction tx = null;
-			try{
-				Newsletter nuovo = new Newsletter();
-				nuovo.setEmail(email);
-				tx = hsession.beginTransaction();
-				hsession.saveOrUpdate(nuovo);
-				tx.commit();
-				
-				request.setAttribute("email", email);
-				request.setAttribute("isok", "1");
-				
-				nextview = "/newsletter.jsp";
-				
-			}catch(Exception ex){
-				
+		if(email != null) {
+			Query q = hsession.createQuery("FROM Newsletter WHERE email = :email");
+			q.setString("email", email);
+			
+			if(q.list().size() == 0)
+			{	
+				Transaction tx = null;
+				try{
+					Newsletter nuovo = new Newsletter();
+					nuovo.setEmail(email);
+					tx = hsession.beginTransaction();
+					hsession.saveOrUpdate(nuovo);
+					tx.commit();
+					
+					request.setAttribute("email", email);
+					request.setAttribute("isok", "1");
+					
+					nextview = "/newsletter.jsp";
+					
+				}catch(Exception ex){
+					
+					request.setAttribute("email", email);
+					request.setAttribute("isok", "0");
+					ex.printStackTrace();
+					
+					nextview = "/newsletter.jsp";
+					tx.rollback();
+				}
+			}
+			else
+			{
 				request.setAttribute("email", email);
 				request.setAttribute("isok", "0");
-				ex.printStackTrace();
-				
+	
 				nextview = "/newsletter.jsp";
-				tx.rollback();
 			}
-		}
-		else
-		{
-			request.setAttribute("email", email);
-			request.setAttribute("isok", "0");
-			
-			nextview = "/newsletter.jsp";
 		}
 	}
 
