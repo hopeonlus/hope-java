@@ -8,6 +8,11 @@
 	<name>HOPE ONLUS website and admin platform</name>
 	<packaging>pom</packaging>
 
+	<!-- see profile for prod values -->
+	<properties>
+		<dbUrl>hopeonlus.it.escalade.mochahost.com</dbUrl>
+	</properties>
+
 	<modules>
 		<module>hope-admin</module>
 		<module>hope-admin-webapp</module>
@@ -44,22 +49,6 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>wagon-maven-plugin</artifactId>
-				<version>1.0-beta-5</version>
-				<configuration>
-					<fromFile>hope-website-webapp/target/hope-website-webapp-${project.version}.war</fromFile>
-					<url>ftp://204.93.157.98/wars</url>
-					<serverId>mochahost-ftp-server</serverId>
-				</configuration>
-				<!-- <executions> <execution> <id>deploy-war</id> <phase>upload-single</phase> 
-					<goals> <goal>upload-single</goal> </goals> <configuration> <fromFile>${project.build.directory}/${project.build.finalName}.war</fromFile> 
-					<toFile>ROOT.war</toFile> <url>ftp://204.93.157.98/</url> <serverId>mochahost-ftp-server</serverId> 
-					</configuration> </execution> </executions> -->
-				<!-- TODO: copy css and img see: http://www.petrikainulainen.net/programming/tips-and-tricks/deploying-static-and-dynamic-content-with-maven-wagon-plugin/ -->
-			</plugin>
 		</plugins>
 		<extensions>
 			<!-- Enabling the use of FTP -->
@@ -70,4 +59,53 @@
 			</extension>
 		</extensions>
 	</build>
+
+
+	<!-- TODO: copy css and img see: http://www.petrikainulainen.net/programming/tips-and-tricks/deploying-static-and-dynamic-content-with-maven-wagon-plugin/ -->
+	<profiles>
+		<profile>
+			<id>deploy-website-war</id>
+			<properties>
+				<dbUrl>localhost</dbUrl>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>wagon-maven-plugin</artifactId>
+						<version>1.0-beta-5</version>
+						<configuration>
+							<fromFile>hope-website-webapp/target/hope-website-webapp-${project.version}.war</fromFile>
+							<toFile>ROOT.war_NEW</toFile>
+							<url>ftp://204.93.157.98/jvm/apache-tomcat-7.0.23/domains/hopeonlus.it</url>
+							<serverId>mochahost-ftp-server</serverId>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>deploy-admin-war</id>
+			<properties>
+				<dbUrl>localhost</dbUrl>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>wagon-maven-plugin</artifactId>
+						<version>1.0-beta-5</version>
+						<configuration>
+							<fromFile>hope-admin-webapp/target/hope-admin-webapp-${project.version}.war</fromFile>
+							<toFile>admin.war_NEW</toFile>
+							<url>ftp://204.93.157.98/jvm/apache-tomcat-7.0.23/domains/hopeonlus.it</url>
+							<serverId>mochahost-ftp-server</serverId>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 </project>

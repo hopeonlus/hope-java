@@ -6,7 +6,7 @@
         Auto-generated mapping file from
         the hibernate.org cfg2hbm engine
 -->
-    <class name="mapping.Anagrafe" table="anagrafe" schema="public">
+    <class name="mapping.Anagrafe" table="anagrafe">
         <id name="id" type="integer">
             <column name="id" />
            <generator class="native"/>

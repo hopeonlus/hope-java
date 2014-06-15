@@ -15,9 +15,14 @@
 				- put password in jetty-dev.xml
 				
 			for production:
-				- put password in $TOMCAT_HOME/conf/Catalina/hopeonlus.it/ROOT.xml
+				- put password in $TOMCAT_HOME/conf/Catalina/hopeonlus.it/admin.xml
+				
+				file sample:
+					<Context>
+						<Environment name="hope/dbpassword" value="pwdhere" type="java.lang.String" override="false"/>
+					</Context>
 		-->
-		<property name="hibernate.connection.url">jdbc:mysql://hopeonlus.it.escalade.mochahost.com:3306/hope2011_db</property>
+		<property name="hibernate.connection.url">jdbc:mysql://${dbUrl}:3306/hope2011_websitedb</property>
 		<property name="hibernate.connection.username">hope2011_rw</property>
 		<property name="hibernate.connection.password">ENC(hSA7gTD7mTVREsra0zETtQ==)</property>
 		<property name="hibernate.cglib.use_reflection_optimizer">true</property>

@@ -14,7 +14,6 @@ import javax.servlet.http.*;
 import mapping.*;
 
 import org.hibernate.*;
-import org.hibernate.cfg.Configuration;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
@@ -31,7 +30,6 @@ import com.lowagie.text.pdf.PdfWriter;
 
 import eccezioni.LoginException;
 import eccezioni.PagamentoException;
-
 import system.*;
 
 public class SociCtrl extends HttpServlet {
@@ -989,7 +987,7 @@ public class SociCtrl extends HttpServlet {
 	private String getTesto(PagamentiId s, List ListaSoci) {
 
 		String testo = s.getCognome() + " " + s.getNome();
-
+		System.out.println(s.getId());
 		printed.add(s.getId());
 
 		Query q = hsession.createQuery("FROM Anagrafe WHERE id = :id");

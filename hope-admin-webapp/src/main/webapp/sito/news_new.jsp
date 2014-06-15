@@ -20,6 +20,16 @@
 	@import url("style.css");
 </STYLE>
 <TITLE>HOPE - Gestione Sito Web</TITLE>
+	
+	<link rel="stylesheet" type="text/css" href="../script/jquery.cleditor.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../script/jquery.cleditor.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("#input").cleditor();
+      });
+    </script>
+    
 </HEAD>
 <BODY id="body">
 	<div id="container">
@@ -79,7 +89,10 @@
 				</TR>
 				<TR>
 					<TD><B>Testo : </B></TD>
-					<TD><textarea name="testo" cols="70" rows="10" style="font:Arial, Helvetica, sans-serif; "></textarea></TD>
+					<TD>
+					<!--<textarea name="testo" cols="70" rows="10" style="font:Arial, Helvetica, sans-serif; "></textarea>-->
+					<textarea id="input" name="testo"></textarea>
+					</TD>
 				</TR>
 				<TR><TD></TD></TR>
 				<TR>

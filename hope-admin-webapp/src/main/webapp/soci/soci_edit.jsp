@@ -1,3 +1,4 @@
+<%@page import="util.cms.CMSUtil"%>
 <%@ page language="java" import="java.util.*" %>
 <%@ page import="system.Avviso"%>
 <%@ page import="mapping.*"%>
@@ -175,11 +176,19 @@ function sicuro()
 						for(int i = 0; i< ListaPagamenti.size(); i++)
 						{
 							Pagamentosoci ps = (Pagamentosoci) ListaPagamenti.get(i);
+							boolean letterAvailable = CMSUtil.getInstance().isWelcomeLetterTemplateAvailable(ps.getAnno());
 %>
 							<TR id="row0">
 								<TD><%= ps.getAnno() %></TD>
 								<TD><%= ps.getImporto() %></TD>
 								<TD align="center"><a href="soci?action=delpagamento&idp=<%= ps.getId() %>&what=<%= what %>&anno=<%= anno %>&dal=<%= dal %>&al=<%= al %>&tessera=<%= tessera %>" onclick="return(confirm('Sicuro?'))"><img src="img/del.gif" border="0"></a></TD>
+								<TD align="center">
+								<% if(letterAvailable) { %>
+									<a href="soci?action=printletter&idp=<%= ps.getId() %>"><img src="img/word_icon.gif" border="0" width="20"></a>
+								<% } else { %>
+									<img src="img/word_icon_disabled.jpg" border="0" width="20">
+								<% } %>
+								</TD>
 							</TR>
 <%
 						}
