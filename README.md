@@ -22,3 +22,5 @@ mvn clean package wagon:upload-single -Pdeploy-admin-war
 
 this will upload the latest version to ftp://204.93.157.98/jvm/apache-tomcat-7.0.23/domains/hopeonlus.it/ROOT.war_NEW
 (or admin.war_NEW)
+
+to deploy the new version, remove the old war and rename the new one to ROOT.new (manual operation via ftp)
