@@ -297,7 +297,7 @@ public class ProgettiCtrl extends HttpServlet{
 		String id = request.getParameter("id");
 		String n_img = request.getParameter("n_img");
 		
-		if(id != null && n_img != null) {
+		if(id != null) {
 			Query q = hsession.createQuery("FROM Progettiimg WHERE idprogetto = :id");
 			q.setString("id", id);
 			List param = q.list();

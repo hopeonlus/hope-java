@@ -11,10 +11,10 @@
             <column name="id" />
            <generator class="native"/>
         </id>
-        <many-to-one name="regioni" class="mapping.Regioni" fetch="select" lazy="false">
+        <many-to-one name="regioni" class="mapping.Regioni" fetch="select" lazy="proxy">
             <column name="idregione" not-null="true" />
         </many-to-one>
-        <many-to-one name="immagini" class="mapping.Immagini" fetch="select" lazy="false">
+        <many-to-one name="immagini" class="mapping.Immagini" fetch="select" lazy="proxy">
             <column name="idimgluogo" not-null="true" />
         </many-to-one>
         <property name="titolo" type="string">
@@ -41,7 +41,7 @@
         <property name="realizzato" type="integer">
             <column name="realizzato" not-null="true" />
         </property>
-        <set name="progettiimgs" inverse="true" lazy="false">
+        <set name="progettiimgs" inverse="true">
             <key>
                 <column name="idprogetto" not-null="true" />
             </key>

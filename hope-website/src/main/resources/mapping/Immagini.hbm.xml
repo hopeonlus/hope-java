@@ -23,19 +23,19 @@
         <property name="tipo" type="integer">
             <column name="tipo" />
         </property>
-        <set name="progettiimgs" inverse="true" lazy="false">
+        <set name="progettiimgs" inverse="true" lazy="true">
             <key>
                 <column name="idimg" not-null="true" />
             </key>
             <one-to-many class="mapping.Progettiimg" />
         </set>
-        <set name="progettis" inverse="true" lazy="false">
+        <set name="progettis" inverse="true" lazy="true">
             <key>
                 <column name="idimgluogo" not-null="true" />
             </key>
             <one-to-many class="mapping.Progetti" />
         </set>
-        <set name="newsimgs" inverse="true" lazy="false">
+        <set name="newsimgs" inverse="true" lazy="true">
             <key>
                 <column name="idimg" not-null="true" />
             </key>
