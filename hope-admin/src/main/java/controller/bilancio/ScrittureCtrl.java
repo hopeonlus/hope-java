@@ -585,7 +585,7 @@ public class ScrittureCtrl extends HttpServlet{
 			Anno tmp = (Anno) anni.get(i);
 			if(tmp.getAnno().intValue() == anno)
 				if(tmp.isChiuso())
-					throw new ScritturaException("si riferisce ad un bilancio gi‡ chiuso.");
+					throw new ScritturaException("si riferisce ad un bilancio gi√† chiuso.");
 		}
 		
 		if(scr.isAutomatico())

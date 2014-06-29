@@ -541,7 +541,7 @@ public class StampaCtrl extends HttpServlet{
 	        cell.setBackgroundColor(new Color(150, 150, 150));
 	        table.addCell(cell);
 	        
-	        cell = new PdfPCell(new Phrase("Citt‡" , FontFactory.getFont(FontFactory.HELVETICA, 9, Font.BOLD)));
+	        cell = new PdfPCell(new Phrase("Citt√†" , FontFactory.getFont(FontFactory.HELVETICA, 9, Font.BOLD)));
 	        cell.setHorizontalAlignment(Element.ALIGN_LEFT);
 	        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 	        cell.setBorder(1);

@@ -2,7 +2,7 @@ package eccezioni;
 
 public class GruppoException extends Exception{
 	
-	static String message = "Errore! Impossibile eliminare il Gruppo perchè presenti una o più Scritture con Conti appartenenti a questo Gruppo.";
+	static String message = "Errore! Impossibile eliminare il Gruppo perchÃ¨ presenti una o piÃ¹ Scritture con Conti appartenenti a questo Gruppo.";
 	/**
 	 * 
 	 */

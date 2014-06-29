@@ -250,7 +250,7 @@ public class AnagrafeCtrl extends HttpServlet {
 
 		request.setAttribute("nominativo", q.list().get(0));
 
-		// non mi ricordo perch�!!
+		// non mi ricordo perchï¿½!!
 		q = hsession.createQuery("FROM Pagamenti WHERE id = :id");
 		q.setString("id", id);
 		List pagamenti = q.list();

@@ -22,7 +22,7 @@ public class SendMail {
 	    BufferedReader in = new BufferedReader( new InputStreamReader(s.getInputStream(), "8859_1") );
 	    BufferedWriter out = new BufferedWriter( new OutputStreamWriter(s.getOutputStream(), "8859_1") );
 
-	    String boundary = "Dat_Sep_Str_#COD#";   // Servir‡??  -- Data Separator String --
+	    String boundary = "Dat_Sep_Str_#COD#";   // Servir√†??  -- Data Separator String --
 
 	    sendln(in, out, "EHLO " + userName);
 	    sendln(in, out, "MAIL FROM: <"+ from + ">");

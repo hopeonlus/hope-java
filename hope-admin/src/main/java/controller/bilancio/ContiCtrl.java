@@ -192,7 +192,7 @@ public class ContiCtrl extends HttpServlet{
 		
 		try {
 			if(q.list().size() > 0)
-				throw new GruppoException("ERRORE! Esiste gi‡ un gruppo con lo stesso nome e dello stesso tipo.");
+				throw new GruppoException("ERRORE! Esiste gi√† un gruppo con lo stesso nome e dello stesso tipo.");
 			else
 			{
 				Gruppo g = new Gruppo();
@@ -224,7 +224,7 @@ public class ContiCtrl extends HttpServlet{
 		
 		try{
 			if(q.list().size() > 0)
-				throw new ContoException("ERRORE! Esiste gi‡ un Conto con questo nome nello stesso gruppo");
+				throw new ContoException("ERRORE! Esiste gi√† un Conto con questo nome nello stesso gruppo");
 			else
 			{
 				q = hsession.createQuery("FROM Gruppo WHERE id = :id");

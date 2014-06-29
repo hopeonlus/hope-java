@@ -282,7 +282,7 @@ public class AdozioniCtrl extends HttpServlet{
 			
 			if(q.list().size() > 0)
 			{
-				throw new AdozioniException("L'anno inserito Ë gi‡ presente per il bambino selezionato!");
+				throw new AdozioniException("L'anno inserito √® gi√† presente per il bambino selezionato!");
 			}
 			
 			q = hsession.createQuery("FROM Bambino WHERE id = :id");

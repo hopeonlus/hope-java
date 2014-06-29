@@ -2,7 +2,7 @@ package eccezioni;
 
 public class ClosedException extends Exception{
 	
-	static String message = "Errore! La data inserita si riferische ad un bilancio gi‡ chiuso";
+	static String message = "Errore! La data inserita si riferische ad un bilancio gi√† chiuso";
 	/**
 	 * 
 	 */

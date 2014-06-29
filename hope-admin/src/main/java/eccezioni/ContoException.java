@@ -2,7 +2,7 @@ package eccezioni;
 
 public class ContoException extends Exception{
 	
-	static String message = "Errore! Impossibile eliminare il Conto perchè presenti una o più Scritture con questo Conto.";
+	static String message = "Errore! Impossibile eliminare il Conto perchÃ¨ presenti una o piÃ¹ Scritture con questo Conto.";
 	/**
 	 * 
 	 */

@@ -2,7 +2,7 @@ package eccezioni;
 
 public class AdozioniException extends Exception{
 
-	static String message = "Il bambino selezionato Ë gi‡ stato adottato per l'anno scelto!";
+	static String message = "Il bambino selezionato √® gi√† stato adottato per l'anno scelto!";
 	/**
 	 * 
 	 */
@@ -17,6 +17,6 @@ public class AdozioniException extends Exception{
 	}
 	
 	public AdozioniException(String nome, String anno) {
-		super ("Il bambino " + nome + " Ë gi‡ stato adottato per l'anno " + anno + "!");
+		super ("Il bambino " + nome + " √® gi√† stato adottato per l'anno " + anno + "!");
 	}
 }

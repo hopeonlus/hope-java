@@ -2,7 +2,7 @@ package eccezioni;
 
 public class PagamentoException extends Exception{
 
-	static String message = "Esite gi� un pagamento per l'anno selezionato!";
+	static String message = "Esite giÃ  un pagamento per l'anno selezionato!";
 	/**
 	 * 
 	 */

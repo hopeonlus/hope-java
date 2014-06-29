@@ -7,7 +7,7 @@ public class ClosedEditException extends Exception{
 	 */
 	private static final long serialVersionUID = 637322439711620636L;
 	
-	static String message = "ERRORE! Impossibile modificare i dati relativi ad un bilancio gi‡ chiuso.";
+	static String message = "ERRORE! Impossibile modificare i dati relativi ad un bilancio gi√† chiuso.";
 	
 	public ClosedEditException() {
 		super(message);
