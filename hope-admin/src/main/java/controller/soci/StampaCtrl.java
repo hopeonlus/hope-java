@@ -106,7 +106,7 @@ public class StampaCtrl extends HttpServlet{
 			{
 				throw new LoginException();
 			}
-			
+		System.out.println("tete 1");	
 			if(action.equals("page"))
 				accedi(request, response);
 			else if(action.equals("stampa"))
@@ -164,7 +164,7 @@ public class StampaCtrl extends HttpServlet{
 		boolean where = false;
 		boolean setanno = false;
 		boolean setanno2 = false;
-		
+	System.out.println("tete 2");	
 		if(!what.equals("bambini"))
 		{
 			String query = "FROM Anagrafe ";
@@ -300,10 +300,11 @@ public class StampaCtrl extends HttpServlet{
         Document document = new Document(PageSize.A4);
         boolean found = false;
         int cells = 0;
-        
+       
+        System.out.println("tete " + nome_file); 
         try
         {
-        	FileOutputStream fos = new FileOutputStream(getServletContext().getRealPath("") + "/soci/pdf/" + nome_file);
+        	FileOutputStream fos = new FileOutputStream("/tmp/soci/pdf/" + nome_file);
             PdfWriter.getInstance(document, fos);
             
             document.setMargins(0, 0, 8, 8);

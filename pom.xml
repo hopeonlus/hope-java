@@ -10,7 +10,7 @@
 
 	<!-- see profile for prod values -->
 	<properties>
-		<dbUrl>hopeonlus.it.escalade.mochahost.com</dbUrl>
+		<dbUrl>localhost</dbUrl>
 	</properties>
 
 	<modules>
