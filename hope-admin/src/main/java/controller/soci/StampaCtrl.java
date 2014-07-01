@@ -304,7 +304,7 @@ public class StampaCtrl extends HttpServlet{
         System.out.println("tete " + nome_file); 
         try
         {
-        	FileOutputStream fos = new FileOutputStream("/tmp/soci/pdf/" + nome_file);
+        	FileOutputStream fos = new FileOutputStream("/tmp/admin/soci/pdf/" + nome_file);
             PdfWriter.getInstance(document, fos);
             
             document.setMargins(0, 0, 8, 8);
@@ -437,7 +437,7 @@ public class StampaCtrl extends HttpServlet{
         
         try
         {
-        	FileOutputStream fos = new FileOutputStream(getServletContext().getRealPath("") + "/soci/pdf/" + nome_file);
+        	FileOutputStream fos = new FileOutputStream("/tmp/admin/soci/pdf/" + nome_file);
             PdfWriter.getInstance(document, fos);
             
             document.setMargins(600, 0, 140, 0);
@@ -498,7 +498,7 @@ public class StampaCtrl extends HttpServlet{
         
         try
         {
-        	FileOutputStream fos = new FileOutputStream(getServletContext().getRealPath("") + "/soci/pdf/" + nome_file);
+        	FileOutputStream fos = new FileOutputStream("/tmp/admin/soci/pdf/" + nome_file);
             PdfWriter writer = PdfWriter.getInstance(document, fos);
             writer.setPageEvent(new MyPageEvent(titolo));
             
