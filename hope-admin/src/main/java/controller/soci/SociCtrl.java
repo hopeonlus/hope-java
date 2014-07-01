@@ -150,8 +150,9 @@ public class SociCtrl extends HttpServlet {
 			HibernateUtil.closeSession();
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextview);
 			if (dispatcher != null) {
-				response.encodeURL(nextview);
-				dispatcher.forward(request, response);
+				String url = response.encodeRedirectURL(nextview);
+    			response.sendRedirect( url );
+				//dispatcher.forward(request, response);
 			}
 
 		}

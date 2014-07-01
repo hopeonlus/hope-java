@@ -106,7 +106,7 @@ public class StampaCtrl extends HttpServlet{
 			{
 				throw new LoginException();
 			}
-		System.out.println("tete 1");	
+
 			if(action.equals("page"))
 				accedi(request, response);
 			else if(action.equals("stampa"))
@@ -122,7 +122,6 @@ public class StampaCtrl extends HttpServlet{
 			
 			Avviso err = new Avviso ("Errore indefinito. Ricorda di non usare il pulsante \"Aggiorna\"");
 			request.setAttribute("err", err);
-			System.out.println(e.getMessage());
 			e.printStackTrace();
 			nextview = "/./error.jsp";
 
@@ -164,7 +163,7 @@ public class StampaCtrl extends HttpServlet{
 		boolean where = false;
 		boolean setanno = false;
 		boolean setanno2 = false;
-	System.out.println("tete 2");	
+
 		if(!what.equals("bambini"))
 		{
 			String query = "FROM Anagrafe ";
