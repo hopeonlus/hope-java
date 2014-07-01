@@ -129,8 +129,13 @@ public class StampaCtrl extends HttpServlet{
 			
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextview);
 			if (dispatcher != null) {
-				response.encodeURL(nextview);
-				dispatcher.forward(request, response);
+				if(nextview.endsWith(".pdf")) {
+					String url = response.encodeRedirectURL("/admin" + nextview);
+    				response.sendRedirect( url );
+				} else {
+					response.encodeURL(nextview);
+					dispatcher.forward(request, response);
+				}
 			}
 			HibernateUtil.closeSession();
 			
