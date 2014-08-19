@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 import mapping.Anagrafe;
 import mapping.Famiglia;
 import mapping.Pagamenti;
-import mapping.PagamentiId;
+import mapping.Pagamenti;
 import mapping.Pagamentosoci;
 import mapping.Socio;
 import mapping.Users;
@@ -519,7 +519,7 @@ public class SociCtrl extends HttpServlet {
 			List fileContent = new ArrayList();
 			fileContent.add(new String[] { "Cognome", "Nome", "Indirizzo", "Cap", "Citta" });
 			for (int i = 0; i < listaSoci.size(); i++) {
-				PagamentiId record = ((Pagamenti) listaSoci.get(i)).getId();
+				Pagamenti record = ((Pagamenti) listaSoci.get(i));
 				String[] x = new String[4];
 
 				x[0] = record.getCognome() + " " + record.getNome();
@@ -584,7 +584,7 @@ public class SociCtrl extends HttpServlet {
 			table.setWidthPercentage(100);
 
 			for (int i = 0; i < ListaSoci.size(); i++) {
-				if ((i == 0) && (!((Pagamenti) ListaSoci.get(i)).getId().isPosta())) {
+				if ((i == 0) && (!((Pagamenti) ListaSoci.get(i)).isPosta())) {
 					String testo = "DA CONSEGNARE A MANO --->";
 
 					PdfPCell cell = new PdfPCell(new Phrase(testo, FontFactory.getFont(FontFactory.HELVETICA, 15, Font.BOLD)));
@@ -609,7 +609,7 @@ public class SociCtrl extends HttpServlet {
 					document.newPage();
 				}
 
-				PagamentiId s = ((Pagamenti) ListaSoci.get(i)).getId();
+				Pagamenti s = ((Pagamenti) ListaSoci.get(i));
 
 				if ((s.isPosta()) && (!found)) {
 					String testo = "DA SPEDIRE PER POSTA --->";
@@ -695,7 +695,7 @@ public class SociCtrl extends HttpServlet {
 			document.open();
 
 			for (int i = 0; i < ListaSoci.size(); i++) {
-				PagamentiId s = ((Pagamenti) ListaSoci.get(i)).getId();
+				Pagamenti s = ((Pagamenti) ListaSoci.get(i));
 
 				if (!alreadyPrinted(s.getId())) {
 					PdfPTable table = new PdfPTable(1);
@@ -822,7 +822,7 @@ public class SociCtrl extends HttpServlet {
 			table.addCell(cell);
 
 			for (int i = 0; i < ListaSoci.size(); i++) {
-				PagamentiId s = ((Pagamenti) ListaSoci.get(i)).getId();
+				Pagamenti s = ((Pagamenti) ListaSoci.get(i));
 
 				cell = new PdfPCell(new Phrase(s.getTessera().toString(), FontFactory.getFont(FontFactory.HELVETICA, 8, Font.NORMAL)));
 				cell.setHorizontalAlignment(Element.ALIGN_LEFT);
@@ -931,7 +931,7 @@ public class SociCtrl extends HttpServlet {
 					document.newPage();
 				}
 
-				PagamentiId s = ((Pagamenti) ListaSoci.get(i)).getId();
+				Pagamenti s = ((Pagamenti) ListaSoci.get(i));
 
 				String testo = s.getCognome() + " " + s.getNome();
 				testo += "\n" + s.getIndirizzo();
@@ -979,7 +979,7 @@ public class SociCtrl extends HttpServlet {
 		document.close();
 	}
 
-	private String getTesto(PagamentiId s, List ListaSoci) {
+	private String getTesto(Pagamenti s, List ListaSoci) {
 
 		String testo = s.getCognome() + " " + s.getNome();
 		System.out.println(s.getId());
@@ -1151,7 +1151,7 @@ public class SociCtrl extends HttpServlet {
 	private boolean inLista(Integer id, List listaSoci) {
 
 		for (int i = 0; i < listaSoci.size(); i++) {
-			PagamentiId s = ((Pagamenti) listaSoci.get(i)).getId();
+			Pagamenti s = ((Pagamenti) listaSoci.get(i));
 			if (s.getId().intValue() == id.intValue())
 				return true;
 		}
@@ -1175,12 +1175,11 @@ public class SociCtrl extends HttpServlet {
 
 		for (int i = 0; i < list.size(); i++) {
 			Pagamenti p = (Pagamenti) list.get(i);
-			PagamentiId pid = p.getId();
-			int tessera = pid.getTessera().intValue();
+			int tessera = p.getTessera().intValue();
 
 			boolean found = false;
 			for (int j = 0; j < soci.size(); j++) {
-				PagamentiId pid1 = ((Pagamenti) soci.get(j)).getId();
+				Pagamenti pid1 = ((Pagamenti) soci.get(j));
 				int tessera1 = pid1.getTessera().intValue();
 
 				if (tessera1 == tessera) {
@@ -1207,8 +1206,7 @@ public class SociCtrl extends HttpServlet {
 			Query q = this.hsession.createQuery("FROM Pagamenti WHERE idp = :id");
 			q.setString("id", pagamento_id);
 
-			Pagamenti p = (Pagamenti) q.list().get(0);
-			PagamentiId person = p.getId();
+			Pagamenti person = (Pagamenti) q.list().get(0);
 
 			HashMap<String, String> params = new HashMap<String, String>();
 			params.put("$LAST_NAME$", person.getCognome());
