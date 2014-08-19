@@ -537,7 +537,7 @@ public class SociCtrl extends HttpServlet {
 				fileContent.add(x);
 			}
 
-			fos = new FileOutputStream("/tmp/admin/soci/pdf/" + nomeFile);
+			fos = new FileOutputStream(StampaCtrl.TMP_FOLDER + nomeFile);
 
 			for (int i = 0; i < fileContent.size(); i++) {
 				String[] x = (String[]) fileContent.get(i);
@@ -571,7 +571,7 @@ public class SociCtrl extends HttpServlet {
 		int cells = 0;
 
 		try {
-			FileOutputStream fos = new FileOutputStream("/tmp/admin/soci/pdf/" + nome_file);
+			FileOutputStream fos = new FileOutputStream(StampaCtrl.TMP_FOLDER + nome_file);
 			PdfWriter.getInstance(document, fos);
 
 			document.setMargins(0, 0, 8, 8);
@@ -685,7 +685,7 @@ public class SociCtrl extends HttpServlet {
 		Document document = new Document(PageSize.A4.rotate());
 
 		try {
-			FileOutputStream fos = new FileOutputStream("/tmp/admin/soci/pdf/" + nome_file);
+			FileOutputStream fos = new FileOutputStream(StampaCtrl.TMP_FOLDER + nome_file);
 			PdfWriter.getInstance(document, fos);
 
 			document.setMargins(600, 0, 140, 0);
@@ -741,7 +741,7 @@ public class SociCtrl extends HttpServlet {
 		Document document = new Document(PageSize.A4.rotate());
 
 		try {
-			FileOutputStream fos = new FileOutputStream("/tmp/admin/soci/pdf/" + nome_file);
+			FileOutputStream fos = new FileOutputStream(StampaCtrl.TMP_FOLDER + nome_file);
 			PdfWriter writer = PdfWriter.getInstance(document, fos);
 			writer.setPageEvent(new MyPageEvent(titolo));
 
@@ -900,7 +900,7 @@ public class SociCtrl extends HttpServlet {
 		Document document = new Document(PageSize.A4);
 
 		try {
-			FileOutputStream fos = new FileOutputStream("/tmp/admin/soci/pdf/" + nome_file);
+			FileOutputStream fos = new FileOutputStream(StampaCtrl.TMP_FOLDER + nome_file);
 			PdfWriter.getInstance(document, fos);
 
 			document.setMargins(0, 0, 8, 8);

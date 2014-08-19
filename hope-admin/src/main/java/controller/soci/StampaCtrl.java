@@ -46,6 +46,8 @@ public class StampaCtrl extends HttpServlet{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	public static final String TMP_FOLDER = "/var/tmp/admin/soci/pdf/";
+	
 	private Session hsession = null;
 	private HttpSession sessione = null;
 	private String nextview = "";
@@ -308,7 +310,7 @@ public class StampaCtrl extends HttpServlet{
         System.out.println("tete " + nome_file); 
         try
         {
-        	FileOutputStream fos = new FileOutputStream("/tmp/admin/soci/pdf/" + nome_file);
+        	FileOutputStream fos = new FileOutputStream(TMP_FOLDER + nome_file);
             PdfWriter.getInstance(document, fos);
             
             document.setMargins(0, 0, 8, 8);
@@ -441,7 +443,7 @@ public class StampaCtrl extends HttpServlet{
         
         try
         {
-        	FileOutputStream fos = new FileOutputStream("/tmp/admin/soci/pdf/" + nome_file);
+        	FileOutputStream fos = new FileOutputStream(TMP_FOLDER + nome_file);
             PdfWriter.getInstance(document, fos);
             
             document.setMargins(600, 0, 140, 0);
@@ -502,7 +504,7 @@ public class StampaCtrl extends HttpServlet{
         
         try
         {
-        	FileOutputStream fos = new FileOutputStream("/tmp/admin/soci/pdf/" + nome_file);
+        	FileOutputStream fos = new FileOutputStream(TMP_FOLDER + nome_file);
             PdfWriter writer = PdfWriter.getInstance(document, fos);
             writer.setPageEvent(new MyPageEvent(titolo));
             
@@ -546,7 +548,7 @@ public class StampaCtrl extends HttpServlet{
 	        cell.setBackgroundColor(new Color(150, 150, 150));
 	        table.addCell(cell);
 	        
-	        cell = new PdfPCell(new Phrase("Città" , FontFactory.getFont(FontFactory.HELVETICA, 9, Font.BOLD)));
+	        cell = new PdfPCell(new Phrase("Cittå" , FontFactory.getFont(FontFactory.HELVETICA, 9, Font.BOLD)));
 	        cell.setHorizontalAlignment(Element.ALIGN_LEFT);
 	        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 	        cell.setBorder(1);
