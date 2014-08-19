@@ -84,8 +84,7 @@
 <%
 			for(int i = 0; i < ListaSoci.size(); i++)
 			{
-				Pagamenti id = ((Pagamenti) ListaSoci.get(i));
-				PagamentiId a = id.getId();
+				Pagamenti a = ((Pagamenti) ListaSoci.get(i));
 %>
 				<TR id="row<%= i%2 %>">
 					<TD width="8%"><a href="soci?action=view&tessera=<%= a.getTessera() %>&what=<%= what %>&anno=<%= anno %>&dal=<%= dal %>&al=<%= al %>"><%= a.getTessera() %></a></TD>
